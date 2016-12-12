@@ -1,19 +1,50 @@
 // game.spec.js
 import Game from "game";
 
+// Every function in your application should have at least two tests
+// All tests should pass
 
 // the global Jasmine function describe
 // 2 params: string, function. string = name or title for spec suite. usually what is being tested.
 
 describe('Game', function() {
+  var testGame; // stand for created test object
+// create this thing each time.
+  beforeEach(function(){
+    testGame = new Game();
+  });
 
-  describe('score', function() {
-    //Specs are defined by calling the global Jasmine function it
-    // it('1. should score a given word', function() {
-    //   // An expectation in Jasmine is an assertion that is either true or false.
-    //   // var testScrabble = new Scrabble();
-    //   //   expect(testScrabble.score('word')).toEqual(8);
-    // });
+/// testing instance variables
+  describe('instance variables', function() {
+
+    it('Should create a new game object', function() {
+    expect(testGame instanceof Game).toEqual(true);
+    });
+
+    it('board should be created.', function() {
+    expect(testGame.board).toEqual([[undefined, undefined, undefined],[undefined, undefined, undefined],[undefined, undefined, undefined]]);
+    });
+
+    it('The board length of each array row should not exceed 3.', function() {
+      for(var i = 0; i < testGame.board.length; i++) {
+        expect(testGame.board[i].length).toBe(3);
+      }
+    });
+    it('Player 1 and 2 should have names, Frida and Harry (respectively)', function() {
+    expect(testGame.playerX).toEqual("Frida");
+    expect(testGame.playerO).toEqual("Harry");
+
+    });
+    // testing to make sure nextTurn counter is is one. 
+    it('test if nextTurn is working apropriatlely', function() {
+    expect(testGame.nextTurn).toEqual(1);
+    });
+
+    // it('Player X is an instance of player.', function() {
+    // expect(testGame instanceof Game).toEqual(true);
+    });
+
+
 
     // it('If word entered is not a string, should throw error', function() {
     //   // An expectation in Jasmine is an assertion that is either true or false.
