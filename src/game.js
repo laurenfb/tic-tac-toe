@@ -9,6 +9,7 @@ var Game = function() {
   this.playerX = "Frida";
   this.playerO = "Harry";
   this.nextTurn = 1;
+  this.status = "pending"
 };
 
 Game.prototype = {
@@ -55,9 +56,15 @@ Game.prototype = {
     }
     // console.log("board:", this.board);
     return this.board;
+  },
+
+  findWinner: function() {
+    // check vertical
+    // check horizontal
+    // check diagonal
   }
 
-  
+
 
 
 
