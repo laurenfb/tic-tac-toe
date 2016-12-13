@@ -95,18 +95,57 @@ describe('Game', function() {
         testGame.board[0][0] = "X";
         expect(testGame.checkOccupied(0,0)).toEqual(true);
       });
-// will need to write an error.
+// error is now created.
       it('Function will respond with error message when user attempts to make move outside of board. As in [3][3] (does not exist', function() {
       expect(
         function(){testGame.checkOccupied(3,3);}
         ).toThrow(TypeError());
 
       });
-
-
     });
 
+    describe('play', function() {
 
+      it('When a player tries to play a spot that is not free, should get message to try again.', function() {
+        testGame.board[0][0] = "O";
+        expect(testGame.play(0,0)).toEqual("Already been useed, please pick another spot.");
+      });
+
+      it('When a player plays a non-occupied spot. It will then hold that players symbol.', function() {
+
+        testGame.play(0,0);
+        expect(testGame.board[0][0]).toEqual("X");
+
+        testGame.play(0,1);
+        expect(testGame.board[0][1]).toEqual("O");
+
+      });
+
+      it('Ensure nextTurn is properly incrementing when we call play it should incrementTurn()', function() {
+        testGame.play(0,0);
+        expect(testGame.nextTurn).toEqual(2);
+        testGame.play(0,1);
+        expect(testGame.nextTurn).toEqual(3);
+
+      });
+      it('Test that board reflects correct arrangment when X and O play spots [0][0], [0][1] respectively', function() {
+
+        testGame.play(0,0);
+        testGame.play(0,1);
+        expect(testGame.board).toEqual(
+        [
+          [ 'X', 'O', '' ],
+          [ '', '', '' ],
+          [ '', '', '' ]
+        ]
+        );
+      });
+
+
+
+
+
+    }); // end of play testing
 
 
 

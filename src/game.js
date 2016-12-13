@@ -36,9 +36,28 @@ Game.prototype = {
       return false;
     }
 
+  },
+
+  play: function(row, column) {
+    if (this.checkOccupied(row, column) === true) {
+      return "Already been useed, please pick another spot.";
+    } else {
+      if (this.nextTurn % 2 === 0) {
+        // if its even play O
+        this.board[row][column] = "O";
+
+      } else {
+        //else play X
+        this.board[row][column] = "X";
+      }
+      // increment turn everytime
+      this.incrementTurn();
+    }
+    // console.log("board:", this.board);
+    return this.board;
   }
 
-
+  
 
 
 
