@@ -35,7 +35,7 @@ describe('Game', function() {
     expect(testGame.playerO).toEqual("Harry");
 
     });
-    // testing to make sure nextTurn counter is is one. 
+    // testing to make sure nextTurn counter is is one.
     it('test if nextTurn is working apropriatlely', function() {
     expect(testGame.nextTurn).toEqual(1);
     });
@@ -55,7 +55,7 @@ describe('Game', function() {
     // });
 
 //     });
-  });
+  // });
 
 
 });// end of giant describe
