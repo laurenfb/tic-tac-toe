@@ -22,7 +22,10 @@ describe('Game', function() {
     });
 
     it('board should be created.', function() {
-    expect(testGame.board).toEqual([[undefined, undefined, undefined],[undefined, undefined, undefined],[undefined, undefined, undefined]]);
+    expect(testGame.board).toEqual([
+      [undefined, undefined, undefined],
+      [undefined, undefined, undefined],
+      [undefined, undefined, undefined]]);
     });
 
     it('The board length of each array row should not exceed 3.', function() {
@@ -43,5 +46,18 @@ describe('Game', function() {
 
     });
 
+
+///  testing helloworld function
+  describe('test helloworld, just for funsies', function() {
+    //
+    it('should display hello world', function() {
+      expect(testGame.helloWorld()).toEqual("hello world");
+    });
+
+    it('should return an instance of a string', function () {
+      // console.log("this is the type of helloworld", typeof(testGame.helloWorld()));
+      expect(typeof(testGame.helloWorld())).toEqual("string");
+    });
+  }); // end of helloworld describe
 
 });// end of Game describe

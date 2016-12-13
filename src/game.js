@@ -13,7 +13,9 @@ var Game = function() {
 
 Game.prototype = {
 
-helloWorld: function() {return "hello world";}
+  helloWorld: function() {
+    return "hello world";
+  }
 
 };
 
