@@ -13,7 +13,15 @@ var Game = function() {
 
 Game.prototype = {
 
-helloWorld: function() {return "hello world";}
+  helloWorld: function() {
+    return "hello world";
+  },
+
+  incrementTurn: function() {
+    if (this.nextTurn < 9) {
+      this.nextTurn += 1;
+    };
+  }
 
 };
 

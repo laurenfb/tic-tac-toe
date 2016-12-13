@@ -22,7 +22,10 @@ describe('Game', function() {
     });
 
     it('board should be created.', function() {
-    expect(testGame.board).toEqual([[undefined, undefined, undefined],[undefined, undefined, undefined],[undefined, undefined, undefined]]);
+    expect(testGame.board).toEqual([
+      [undefined, undefined, undefined],
+      [undefined, undefined, undefined],
+      [undefined, undefined, undefined]]);
     });
 
     it('The board length of each array row should not exceed 3.', function() {
@@ -44,4 +47,41 @@ describe('Game', function() {
     });
 
 
+///  testing helloworld function
+  describe('test helloworld, just for funsies', function() {
+    //
+    it('should display hello world', function() {
+      expect(testGame.helloWorld()).toEqual("hello world");
+    });
+
+    it('should return an instance of a string', function () {
+      // console.log("this is the type of helloworld", typeof(testGame.helloWorld()));
+      expect(typeof(testGame.helloWorld())).toEqual("string");
+    });
+  }); // end of helloworld describe
+
+  describe('incrementTurn', function() {
+    it('should increment nextTurn by 1 when it is called', function() {
+      expect(testGame.nextTurn).toBe(1);
+      testGame.incrementTurn();
+      expect(testGame.nextTurn).toBe(2);
+    });
+
+    it('should be allowed to be up to 9', function() {
+      expect(testGame.nextTurn).toBe(1);
+      for (var i = 0; i < 8; i++) {
+        // expect(testGame.nextTurn).toBe(i + 1)
+        testGame.incrementTurn()
+        expect(testGame.nextTurn).toBe(i + 2) // i starts at zero, and we're testing that nextTurn, which starts at 1, has been incremented to 2 (etc)
+      };
+    });
+
+    it('should never be greater than 9', function() {
+      expect(testGame.nextTurn).toBe(1);
+      for (var i = 0; i < 15; i++) {
+        testGame.incrementTurn()
+      };
+      expect(testGame.nextTurn).toBe(9);
+    });
+  });
 });// end of Game describe
