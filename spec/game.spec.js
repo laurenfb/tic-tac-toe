@@ -30,32 +30,18 @@ describe('Game', function() {
         expect(testGame.board[i].length).toBe(3);
       }
     });
-    it('Player 1 and 2 should have names, Frida and Harry (respectively)', function() {
-    expect(testGame.playerX).toEqual("Frida");
-    expect(testGame.playerO).toEqual("Harry");
 
+    it('Player 1 and 2 should have names, Frida and Harry (respectively)', function() {
+      expect(testGame.playerX).toEqual("Frida");
+      expect(testGame.playerO).toEqual("Harry");
     });
-    // testing to make sure nextTurn counter is is one. 
+
+    // testing to make sure nextTurn counter is is one.
     it('test if nextTurn is working apropriatlely', function() {
     expect(testGame.nextTurn).toEqual(1);
     });
 
-    // it('Player X is an instance of player.', function() {
-    // expect(testGame instanceof Game).toEqual(true);
     });
 
 
-
-    // it('If word entered is not a string, should throw error', function() {
-    //   // An expectation in Jasmine is an assertion that is either true or false.
-    //   var testScrabble = new Scrabble();
-    //   expect(
-    //     function(){testScrabble.score(10);}
-    //   ).toThrow(TypeError());
-    // });
-
-//     });
-  });
-
-
-});// end of giant describe
+});// end of Game describe
