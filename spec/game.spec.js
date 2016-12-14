@@ -48,6 +48,18 @@ describe('Game', function() {
         expect(testGame.status).toEqual("pending");
       });
 
+      it('should be initialized with 0 score for both players', function() {
+        expect(testGame.scorePlayerO).toEqual(0);
+        expect(testGame.scorePlayerX).toEqual(0);
+      });
+
+      it('should be initialized with pointValues for magic square', function() {
+        expect(testGame.pointValues).toEqual([
+          [8,1,6],
+          [3,5,7],
+          [4,9,2]]);
+      });
+
     });
 
   ///  testing helloworld function
