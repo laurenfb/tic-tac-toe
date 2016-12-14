@@ -70,21 +70,21 @@ describe('Game', function() {
       expect(testGame.nextTurn).toBe(2);
     });
 
-    it('should be allowed to be up to 9', function() {
+    it('should be allowed to be up to 10', function() {
       expect(testGame.nextTurn).toBe(1);
-      for (var i = 0; i < 8; i++) {
+      for (var i = 0; i < 9; i++) {
         // expect(testGame.nextTurn).toBe(i + 1)
         testGame.incrementTurn();
         expect(testGame.nextTurn).toBe(i + 2); // i starts at zero, and we're testing that nextTurn, which starts at 1, has been incremented to 2 (etc)
       }
     });
 
-    it('should never be greater than 9', function() {
+    it('should never be greater than 10', function() {
       expect(testGame.nextTurn).toBe(1);
       for (var i = 0; i < 15; i++) {
         testGame.incrementTurn();
       }
-      expect(testGame.nextTurn).toBe(9);
+      expect(testGame.nextTurn).toBe(10);
     });
   });
   // testing isOccupied()

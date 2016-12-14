@@ -9,7 +9,13 @@ var Game = function() {
   this.playerX = "Frida";
   this.playerO = "Harry";
   this.nextTurn = 1;
-  this.status = "pending"
+  this.status = "pending";
+  this.scorePlayerX = 0;
+  this.scorePlayerO = 0;
+  // pointValues assigns a magic square point value to each spot on this.board. ie, this.board[0][0] has the point value of this.pointValues[0][0]
+  this.pointValues = [[8,1,6],
+                    [3,5,7],
+                    [2,9,2]]
 };
 
 Game.prototype = {
@@ -19,7 +25,7 @@ Game.prototype = {
   },
 
   incrementTurn: function() {
-    if (this.nextTurn < 9) {
+    if (this.nextTurn <= 9) {
       this.nextTurn += 1;
     }
   },
