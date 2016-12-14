@@ -48,11 +48,6 @@ describe('Game', function() {
         expect(testGame.status).toEqual("pending");
       });
 
-      it('should be initialized with 0 score for both players', function() {
-        expect(testGame.scorePlayerO).toEqual(0);
-        expect(testGame.scorePlayerX).toEqual(0);
-      });
-
       it('should be initialized with pointValues for magic square', function() {
         expect(testGame.pointValues).toEqual([
           [8,1,6],
@@ -155,9 +150,63 @@ describe('Game', function() {
       ]
       );
     });
+
+    it('if playerX has won before the board if filled, it will return "x wins!" ', function() {
+      // player X
+      testGame.play(0,0);
+      // player O
+      testGame.play(0,1);
+      // player X
+      testGame.play(1,1);
+      // player O
+      testGame.play(0,2);
+                // player X
+      expect(testGame.play(2,2)).toEqual("X wins!");
+    });
+
+    it('if playerO has won before the board if filled, it will return "O wins!" ', function() {
+      // player X
+      testGame.play(0,1);
+      // player O
+      testGame.play(0,0);
+
+      // player X
+      testGame.play(1,2);
+
+      // player O
+      testGame.play(1,0);
+
+      // player X
+      testGame.play(2,2);
+                //playerO
+      expect(testGame.play(2,0)).toEqual("O wins!");
+    });
+    it('If someone has already won, other player cannot continue to make moves. (in this case O, cannot continue because X wins.s)', function() {
+      // player X
+      testGame.play(0,0);
+      testGame.play(1,0);
+      testGame.play(0,1);
+      testGame.play(1,2)
+      testGame.play(0,2)
+
+      expect(testGame.play(2,1)).toEqual("Game is over, just let it go!");
+    });
+
+
+
+
+
+[
+["X", "X", "X"],
+["O", "", "O"],
+["", "", ""]
+
+]
+
+
   }); // end of play testing
 
-  describe('findWinner', function() {
+0,  describe('findWinner', function() {
     ///////////// X testing winner
     it('should find that X is winner if X has 3 in a row vertically', function () {
       // this is X,X,X on the vertical on the left.

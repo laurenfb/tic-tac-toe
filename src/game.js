@@ -10,8 +10,7 @@ var Game = function() {
   this.playerO = "Harry";
   this.nextTurn = 1;
   this.status = "pending";
-  this.scorePlayerX = 0;
-  this.scorePlayerO = 0;
+
   // pointValues assigns a magic square point value to each spot on this.board. ie, this.board[0][0] has the point value of this.pointValues[0][0]
   this.pointValues = [[8,1,6],
                     [3,5,7],
@@ -46,8 +45,16 @@ Game.prototype = {
   },
 
   play: function(row, column) {
+
     if (this.checkOccupied(row, column) === true) {
+
       return "Already been useed, please pick another spot.";
+
+      // allows us to keep ppl from playing after game is over!
+    } else if (this.status !== "pending") {
+
+      return "Game is over, just let it go!";
+
     } else {
       if (this.nextTurn % 2 === 0) {
         // if its even play O
@@ -59,9 +66,16 @@ Game.prototype = {
       }
       // increment turn everytime
       this.incrementTurn();
+      // see if we have winner.
+      this.findWinner();
     }
     // console.log("board:", this.board);
-    return this.board;
+    if (this.status == "pending") {
+      return this.board;
+    } else {
+      return this.status;
+    }
+
   },
 
   findWinner: function() {
@@ -202,7 +216,10 @@ Game.prototype = {
 
 };
 
-
+//
+// npm run repl
+// var Game = require('game').default;
+// var game = new Game();
 
 
 export default Game;
