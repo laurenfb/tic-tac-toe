@@ -59,9 +59,13 @@ Game.prototype = {
   },
 
   findWinner: function() {
+// Get the current outcome of the game (X win, O win, tie, or undecided)
     // check vertical
     // check horizontal
     // check diagonal
+    //
+
+
   }
 
 
