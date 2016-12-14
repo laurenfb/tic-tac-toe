@@ -181,9 +181,27 @@ describe('Game', function() {
                 //playerO
       expect(testGame.play(2,0)).toEqual("O wins!");
     });
+    it('If someone has already won, other player cannot continue to make moves. (in this case O, cannot continue because X wins.s)', function() {
+      // player X
+      testGame.play(0,0);
+      testGame.play(1,0);
+      testGame.play(0,1);
+      testGame.play(1,2)
+      testGame.play(0,2)
+
+      expect(testGame.play(2,1)).toEqual("Game is over, just let it go!");
+    });
 
 
 
+
+
+[
+["X", "X", "X"],
+["O", "", "O"],
+["", "", ""]
+
+]
 
 
   }); // end of play testing
