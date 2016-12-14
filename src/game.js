@@ -66,7 +66,13 @@ Game.prototype = {
 
   findWinner: function() {
     // check vertical
+    if (this.vertical() != "pending") {
+      return this.vertical();
+    }
     // check horizontal
+    else if (this.horizontal() != "pending") {
+      return this.horizontal();
+    }
     // check diagonal
   }
 
