@@ -10,6 +10,12 @@ var Game = function() {
   this.playerO = "Harry";
   this.nextTurn = 1;
   this.status = "pending";
+  this.scorePlayerX = 0;
+  this.scorePlayerO = 0;
+  // pointValues assigns a magic square point value to each spot on this.board. ie, this.board[0][0] has the point value of this.pointValues[0][0]
+  this.pointValues = [[8,1,6],
+                    [3,5,7],
+                    [4,9,2]];
 };
 
 Game.prototype = {
@@ -19,7 +25,7 @@ Game.prototype = {
   },
 
   incrementTurn: function() {
-    if (this.nextTurn < 9) {
+    if (this.nextTurn <= 9) {
       this.nextTurn += 1;
     }
   },
@@ -58,46 +64,125 @@ Game.prototype = {
     return this.board;
   },
 
-// special stupid function to get board at desired result of a winner.
-  makeWin: function() {
-    game.play(0,0);
-    game.play(0,1);
-    game.play(1,0);
-    game.play(1,1);
-    game.play(2,0);
+  findWinner: function() {
+    // check vertical
+    if (this.vertical() != "pending") {
+      return this.vertical();
+    }
+    // check horizontal
+    else if (this.horizontal() != "pending") {
+      return this.horizontal();
+    }
+    // check diagonal
+    else if (this.diagonal() != "pending") {
+      return this.diagonal();
+    }
+  },
+
+  vertical: function () {
+    var scoreX = 0;
+    var scoreO = 0;
+    for (var row = 0; row < 3; row++) {
+      for (var col = 0; col < 3; col++) {
+        if (this.board[col][row] == "X") {
+          scoreX += this.pointValues[col][row];
+          // console.log("element is X", scoreX)
+        } else if (this.board[col][row] == "O") {
+          scoreO += this.pointValues[col][row];
+          // console.log("element is O", scoreO)
+        }
+      }
+      var winner = this.checkScore(scoreX,scoreO);
+      // console.log(this.checkScore(scoreX, scoreO))
+      if (winner) {
+        this.status = winner;
+      } else {
+        //reset scores
+        scoreX = 0;
+        scoreO = 0;
+      }
+    }
+    return this.status;
+  },
+
+  horizontal: function () {
+    var scoreX = 0;
+    var scoreO = 0;
+    for (var row = 0; row < 3; row++) {
+      for (var col = 0; col < 3; col++) {
+        if (hoBoard[row][col] == "X") {
+          scoreX += pointValues[row][col];
+          console.log("element is X");
+        } else if (hoBoard[row][col] == "O") {
+          scoreO += pointValues[row][col];
+          console.log("element is O");
+        }
+      }
+    }
+    var winner = this.checkScore(scoreX,scoreO);
+    // console.log(this.checkScore(scoreX, scoreO))
+    if (winner) {
+      this.status = winner;
+    } else {
+      //reset scores
+      scoreX = 0;
+      scoreO = 0;
+    }
+  return this.status;
+  },
+
+  checkScore: function(scoreX, scoreO) {
+    if (scoreX == 15) {
+      return("X wins!");
+    } else if (scoreO == 15) {
+      return("O wins!");
+    }
   },
 
 
-     // check vertical
-      // check horizontal
-      // check diagonal
-  findWinner: function() {
-    var row1 = this.board[0][0];
-    var row2 = this.board[0][1];
-    var row3 = this.board [0][2];
+  diagonal: function () {
+    // init starting value of count
+    var scoreX = 0;
+    var scoreO = 0;
+    // from function(play)
 
-    for(var i = 0; i < row1.length; i++) {
+    for (var row = 0; row < 3; row++) {
 
-      if(row1[i] == "X" || row[i] == "Y") {
-        console.log("we have a winner in row 1!!");
-        this.status = "winner";
-        return this.board[row][column] + "is the winner!";
+      for (var col = 2; col < ; col--) {
 
+        if (this.board[row][col] == "X") {
+          scoreX += this.pointValues[row][col];
+          // console.log("element is X", scoreX)
+        } else if (this.board[row][col] == "O") {
+          scoreO += this.pointValues[row][col];
+          // console.log("element is O", scoreO)
+        }
+      }
+      var winner = this.checkScore(scoreX,scoreO);
+      // console.log(this.checkScore(scoreX, scoreO))
+      if (winner) {
+        this.status = winner;
+      } else {
+        //reset scores
+        scoreX = 0;
+        scoreO = 0;
       }
     }
-    for(var j = 0; j < row2.length; j++) {
-
-    }
-  }
-
+    return this.status;
+  },
 };
+
+
+
+
+
 // Get the current outcome of the game (X win, O win, tie, or undecided)
 // row 0
     //      |     |
     // [0,0]|[0,1]||[0,2],
-    // ------------------
+    // -----+-----+------
     // [1,0]|[1,1]|[1,2],
-    // -------------------
+    // -----+-----+-------
     // [2,0]|[2,1]|[2,2],
     //      |     |
 // must run this var Game = require('game').default;

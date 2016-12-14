@@ -217,6 +217,20 @@ describe('Game', function() {
       expect(testGame.status).toEqual("pending");
     });
 
+    it('should be able to detect diagonal winner', function () {
+      // testing diagonal win.
+      testGame.board = [["O", "", "X"],
+                        ["O", "X", ""],
+                        ["X", "O", "X"]];
+      expect(testGame.findWinner()).toEqual("X wins!");
+      // this test won't pass if we don't check for the winner after each turn is played.
+      expect(testGame.status).toEqual("pending");
+    });
+
+
+
+
+
   }); // end of findwinner
 
 
