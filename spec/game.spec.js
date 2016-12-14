@@ -178,14 +178,14 @@ describe('Game', function() {
       // console.log("this is the board", testGame.board)
       expect(testGame.findWinner()).toEqual("X wins!");
     });
-    // xit('should find that X is winner if X has 3 in a row diagonally', function () {
-    //
-    //   // this is X, X, X diagonal
-    //   testGame.board[0][0] = "X";
-    //   testGame.board[1][1] = "X";
-    //   testGame.board[2][2] = "X";
-    //   expect(testGame.findWinner()).toEqual("X wins!");
-    // });
+    it('should find that X is winner if X has 3 in a row diagonally', function () {
+
+      // this is X, X, X diagonal
+      testGame.board[0][0] = "X";
+      testGame.board[1][1] = "X";
+      testGame.board[2][2] = "X";
+      expect(testGame.findWinner()).toEqual("X wins!");
+    });
     /////////////////// O testing winner
     it('should find that O is winner if O has 3 in a row vertically', function () {
 
@@ -207,14 +207,14 @@ describe('Game', function() {
       // console.log("this is the board", testGame.board)
       expect(testGame.findWinner()).toEqual("O wins!");
     });
-    // xit('should find that O is winner if O has 3 in a row diagonally', function () {
-    //
-    //   // this is O, O, O diagonally from right to left
-    //   testGame.board[0][2] = "O";
-    //   testGame.board[1][1] = "O";
-    //   testGame.board[2][0] = "O";
-    //   expect(testGame.findWinner()).toEqual("O wins!");
-    // });
+    it('should find that O is winner if O has 3 in a row diagonally', function () {
+
+      // this is O, O, O diagonally from right to left
+      testGame.board[0][2] = "O";
+      testGame.board[1][1] = "O";
+      testGame.board[2][0] = "O";
+      expect(testGame.findWinner()).toEqual("O wins!");
+    });
     ////////////// game is over, but there's no winner
     it('should be able to tell when the game is over but there\'s a tie', function () {
       testGame.play(0,1) // x top middle

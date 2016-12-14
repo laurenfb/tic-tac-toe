@@ -15,7 +15,7 @@ var Game = function() {
   // pointValues assigns a magic square point value to each spot on this.board. ie, this.board[0][0] has the point value of this.pointValues[0][0]
   this.pointValues = [[8,1,6],
                     [3,5,7],
-                    [4,9,2]]
+                    [4,9,2]];
 };
 
 Game.prototype = {
@@ -74,10 +74,10 @@ Game.prototype = {
       return this.horizontal();
     }
     // check diagonal
-    // else if (this.diagonal() != "pending") {
-    //   console.log("diagonal")
-    //   return this.diagonal();
-    // }
+    else if (this.diagonal() != "pending") {
+      console.log("diagonal");
+      return this.diagonal();
+    }
     // check if the game is complete && tied
     else if (this.status == "pending" && this.nextTurn == 10) {
       this.status = "tie";
@@ -93,14 +93,14 @@ Game.prototype = {
     for (var row = 0; row < 3; row++) {
       for (var col = 0; col < 3; col++) {
         if (this.board[col][row] == "X") {
-          scoreX += this.pointValues[col][row]
+          scoreX += this.pointValues[col][row];
           // console.log("element is X", scoreX)
         } else if (this.board[col][row] == "O") {
-          scoreO += this.pointValues[col][row]
+          scoreO += this.pointValues[col][row];
           // console.log("element is O", scoreO)
         }
       }
-      var winner = this.checkScore(scoreX,scoreO)
+      var winner = this.checkScore(scoreX,scoreO);
       // console.log(this.checkScore(scoreX, scoreO))
       if (winner) {
         this.status = winner;
@@ -119,15 +119,15 @@ Game.prototype = {
     for (var row = 0; row < 3; row++) {
       for (var col = 0; col < 3; col++) {
         if (this.board[row][col] == "X") {
-          scoreX += this.pointValues[row][col]
+          scoreX += this.pointValues[row][col];
           // console.log("element is X")
         } else if (this.board[row][col] == "O") {
-          scoreO += this.pointValues[row][col]
+          scoreO += this.pointValues[row][col];
           // console.log("element is O")
         }
       }
     }
-    var winner = this.checkScore(scoreX,scoreO)
+    var winner = this.checkScore(scoreX,scoreO);
     // console.log(this.checkScore(scoreX, scoreO))
     if (winner) {
       this.status = winner;
@@ -140,13 +140,60 @@ Game.prototype = {
   },
 
   diagonal: function() {
+    var scoreX = 0;
+    var scoreO = 0;
+    // checking for DIAGONAL Part 1
+    // top right --> bottom left. AKA the hard one!
+    for(var row = 0; row < 3; row++) {
+      var col = 2-row;
+      if (this.board[row][col] == "X") {
+        scoreX += this.pointValues[row][col];
+      } else if (this.board[row][col] == "O") {
+        scoreO += this.pointValues[row][col];
+      }
+    }
+    // checking diagonal Winner.
+    var winner = this.checkScore(scoreX,scoreO);
+    // console.log(this.checkScore(scoreX, scoreO))
+    if (winner) {
+      this.status = winner;
+      return this.status;
+    } else {
+      //reset scores
+      scoreX = 0;
+      scoreO = 0;
+    }
+    /// checking for DIAGONAL PART II
+    scoreX = 0; // do we need this?
+    scoreO = 0;
+      // top left ---> bottom right
+    for(var i = 0; i < 3; i++) {
+      if(this.board[i][i] == "X") {
+        scoreX += this.pointValues[i][i];
+      } else if (this.board[i][i] == "O") {
+        scoreO += this.pointValues[i][i];
+      }
+    }
+    // checking diagonal Winner.
+    winner = this.checkScore(scoreX,scoreO);
+    // console.log(this.checkScore(scoreX, scoreO))
+    if (winner) {
+      this.status = winner;
+      return this.status;
+    } else {
+      //reset scores
+      scoreX = 0;
+      scoreO = 0;
+    }
+    return this.status;
+
   },
 
   checkScore: function(scoreX, scoreO) {
     if (scoreX == 15) {
-      return("X wins!")
+      return("X wins!");
     } else if (scoreO == 15) {
-      return("O wins!")
+      return("O wins!");
     }
   }
 
