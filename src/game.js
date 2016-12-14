@@ -9,7 +9,7 @@ var Game = function() {
   this.playerX = "Frida";
   this.playerO = "Harry";
   this.nextTurn = 1;
-  this.status = "pending"
+  this.status = "pending";
 };
 
 Game.prototype = {
@@ -58,23 +58,67 @@ Game.prototype = {
     return this.board;
   },
 
+// special stupid function to get board at desired result of a winner.
+  makeWin: function() {
+    game.play(0,0);
+    game.play(0,1);
+    game.play(1,0);
+    game.play(1,1);
+    game.play(2,0);
+  },
+
+
+     // check vertical
+      // check horizontal
+      // check diagonal
   findWinner: function() {
-// Get the current outcome of the game (X win, O win, tie, or undecided)
-    // check vertical
-    // check horizontal
-    // check diagonal
-    //
+    var row1 = this.board[0][0];
+    var row2 = this.board[0][1];
+    var row3 = this.board [0][2];
 
+    for(var i = 0; i < row1.length; i++) {
 
+      if(row1[i] == "X" || row[i] == "Y") {
+        console.log("we have a winner in row 1!!");
+        this.status = "winner";
+        return this.board[row][column] + "is the winner!";
+
+      }
+    }
+    for(var j = 0; j < row2.length; j++) {
+
+    }
   }
 
-
-
-
-
 };
+// Get the current outcome of the game (X win, O win, tie, or undecided)
+// row 0
+    //      |     |
+    // [0,0]|[0,1]||[0,2],
+    // ------------------
+    // [1,0]|[1,1]|[1,2],
+    // -------------------
+    // [2,0]|[2,1]|[2,2],
+    //      |     |
+// must run this var Game = require('game').default;
+// then var game = new Game();
+// game.play(0,0)
+// game.play(0,1)
+// game.play(1,0)
+// game.play(1,1)
+// game.play(2,0)
 
 
+
+
+
+
+
+
+
+// testingGame = new Game();
+//
+// testGame.findWinner(); // should call function.
 
 
 export default Game;
