@@ -10,8 +10,7 @@ var Game = function() {
   this.playerO = "Harry";
   this.nextTurn = 1;
   this.status = "pending";
-  this.scorePlayerX = 0;
-  this.scorePlayerO = 0;
+  
   // pointValues assigns a magic square point value to each spot on this.board. ie, this.board[0][0] has the point value of this.pointValues[0][0]
   this.pointValues = [[8,1,6],
                     [3,5,7],
@@ -202,7 +201,10 @@ Game.prototype = {
 
 };
 
-
+//
+// npm run repl
+// var Game = require('game').default;
+// var game = new Game();
 
 
 export default Game;
