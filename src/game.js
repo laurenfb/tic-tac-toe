@@ -15,7 +15,7 @@ var Game = function() {
   // pointValues assigns a magic square point value to each spot on this.board. ie, this.board[0][0] has the point value of this.pointValues[0][0]
   this.pointValues = [[8,1,6],
                     [3,5,7],
-                    [2,9,2]]
+                    [4,9,2]]
 };
 
 Game.prototype = {
