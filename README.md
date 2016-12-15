@@ -66,7 +66,7 @@ You should strive to follow the BDD approach when building this application. Whe
 ### Wave Two:
 In this wave, we will design the framework of our Backbone application. Then, using this framework we create for ourselves, we will begin by implementing the front-end of our Tic-Tac-Toe game using Backbone Views.
 
-#### Requirements
+#### Scope
 We will not be completing the entire implementation of the Tic-Tac-Toe game in this wave. These are the requirements for what you should complete in this wave:
 
 1. Complete the _design_ (on paper, whiteboard and/or Trello) for **all** components in your Backbone game implementation  
@@ -78,7 +78,7 @@ We will not be completing the entire implementation of the Tic-Tac-Toe game in t
 Note: Don't start on the JS object to Model conversion until Wave three!
 
 #### Testing Requirements
-None for this wave
+No additional requirements for this wave
 
 ### Wave Three:
 In this wave we will be taking the code we wrote in Wave One for the Tic-Tac-Toe game using plain JavaScript and converting this into Backbone Models. We will integrate these models with the rest of the Backbone application we created in Wave Two.
