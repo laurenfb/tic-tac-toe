@@ -67,12 +67,12 @@ You should strive to follow the BDD approach when building this application. Whe
 In this wave, we will design the framework of our Backbone application. Then, using this framework we create for ourselves, we will begin by implementing the front-end of our Tic-Tac-Toe game using Backbone Views.
 
 #### Requirements
-We will not be completing the entire implementation of the Tic-Tac-Toe game in this wave. These are the requirements for what you should complete in this wave:
-1. Complete the _design_ (on paper, whiteboard and/or Trello) for **all** components in your Backbone game implementation
-1. Create "stub" files and folders for all of these components in your application
-1. Design the **user interface** for your Tic-Tac-Toe game (on paper, whiteboard and/or Trello)
-1. Implement the user interface for your game in your application, using templates, "regular" HTML and CSS
-1. Implement the framework for handling the **DOM Events** that your front-end will interact with. Note: By "framework" here, we mean determine what those DOM Events are and creating function "stubs" that will handle the actions that correspond with these events in the next wave.
+We will not be completing the entire implementation of the Tic-Tac-Toe game in this wave. These are the requirements for what you should complete in this wave:  
+1. Complete the _design_ (on paper, whiteboard and/or Trello) for **all** components in your Backbone game implementation  
+1. Create "stub" files and folders for all of these components in your application  
+1. Design the **user interface** for your Tic-Tac-Toe game (on paper, whiteboard and/or Trello)  
+1. Implement the user interface for your game in your application, using templates, "regular" HTML and CSS  
+1. Implement the framework for handling the **DOM Events** that your front-end will interact with. Note: By "framework" here, we mean determine what those DOM Events are and creating function "stubs" that will handle the actions that correspond with these events in the next wave.  
 
 Note: Don't start on the JS object to Model conversion until Wave three!
 
