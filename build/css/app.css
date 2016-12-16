@@ -1,0 +1,19 @@
+  #board {
+  display: table;
+  padding: auto;
+  margin: auto;
+  width: 500px;
+  height: 500px;
+}
+
+.board-bottom-line{
+  border-bottom: 10px solid black;
+}
+
+td:nth-child(2), td:nth-child(3){
+  border-left: 10px solid black;
+}
+
+tr{
+  background-color: none;
+}
