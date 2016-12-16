@@ -192,21 +192,9 @@ describe('Game', function() {
       expect(testGame.play(2,1)).toEqual("Game is over, just let it go!");
     });
 
-
-
-
-
-[
-["X", "X", "X"],
-["O", "", "O"],
-["", "", ""]
-
-]
-
-
   }); // end of play testing
 
-0,  describe('findWinner', function() {
+  describe('findWinner', function() {
     ///////////// X testing winner
     it('should find that X is winner if X has 3 in a row vertically', function () {
       // this is X,X,X on the vertical on the left.
