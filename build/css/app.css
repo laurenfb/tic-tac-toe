@@ -1,0 +1,44 @@
+names-form{
+  width: 100%;
+}
+
+.top-header{
+  text-align: center;
+  width: 100%;
+  background-color: gold;
+}
+
+h1{
+  font-size: 5em;
+  background-color: rgb(0, 31, 143);
+  color: white;
+}
+
+.square {
+  float: left;
+  position: relative;
+  width: 30%;
+  padding-bottom: 30%; /* = width for a 1:1 aspect ratio */
+  margin: 1.66%;
+  overflow: hidden;
+  background-color: rgb(100, 165, 224);
+}
+
+.square:hover{
+  background-color: rgb(0, 31, 143)
+}
+
+.square-content {
+  position: absolute;
+  height: 80%;
+  width: 90%;
+  padding: 10% 5%;
+  font-size: 4em;
+  text-align: center;
+  color: white;
+}
+
+.board-holder{
+  max-width: 550px;
+  margin: auto;
+}

@@ -3,8 +3,84 @@
   <head>
     <title>Tic-Tac-Toe</title>
     <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
+    <div class='row'>
+      <header class='top-header'>
+        <form class="names-form">
+          <div class='medium-6 columns'>
+            <h1>tic-tac-toe</h1>
+          </div>
+          <div class="medium-4 columns">
+            <label>
+              player x
+              <input type="text" name="player-x">
+            </label>
+            <label>
+              player o
+              <input type="text" name="player-o">
+            </label>
+            <button type="submit" class="button btn-save">begin!</button>
+            <button type="button" class="button btn-cancel">cancel</button>
+          </div>
+          </form>
+        </header>
+      </div>
+    <main class="board-holder">
+        <div class="square">
+            <div class="square-content">
+                X
+            </div>
+        </div><div class="square">
+            <div class="square-content">
+                X
+            </div>
+        </div><div class="square">
+            <div class="square-content">
+                X
+            </div>
+        </div><div class="square">
+            <div class="square-content">
+                X
+            </div>
+        </div><div class="square">
+            <div class="square-content">
+                X
+            </div>
+        </div><div class="square">
+            <div class="square-content">
+                X
+            </div>
+        </div><div class="square">
+            <div class="square-content">
+                X
+            </div>
+        </div><div class="square">
+            <div class="square-content">
+                X
+            </div>
+        </div><div class="square">
+            <div class="square-content">
+                X
+            </div>
+        </div>
+    </main>
+
+
+
+    <!-- Underscore Templates -->
+  <script type="text/template" id="board-template">
+
+  </script>
+
+  <script type="text/template" id="square-template">
+  </script>
+
+  <!-- Entire JS project built by Webpack -->
     <script src="/app.bundle.js" charset="utf-8"></script>
   </body>
 </html>
