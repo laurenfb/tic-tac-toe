@@ -10,13 +10,12 @@ const SquareView = Backbone.View.extend({
   },
 
   render: function() {
-    console.log('rendering squareview')
-    console.log('this.model.attributes', this.model.attributes)
-
+    // take the current element and give it the following html:
+    // use the template, and give it the attributes of the model.
     this.$el.html(this.template(this.model.attributes));
-    console.log('this.$el', this.$el)
    return this;
- }
+  }
+
 }); // end of SquareView
 
 export default SquareView;

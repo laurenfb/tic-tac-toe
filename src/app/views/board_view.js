@@ -8,10 +8,10 @@ const BoardView = Backbone.View.extend({
   },
 
   render: function() {
-    console.log("rendering boardView")
+    // console.log("rendering boardView")
     const newSquareList = this.$el;
-    console.log("this is the new square list", newSquareList)
-    // newSquareList.empty();
+    // console.log("this is the new square list", newSquareList)
+    newSquareList.empty();
 
     const self = this;
 
@@ -20,12 +20,17 @@ const BoardView = Backbone.View.extend({
         model: square
       });
       //  self.listenTo(card, 'select', self.showCard);
-      console.log('this is newSquare', newSquare)
       newSquareList.append(newSquare.render().$el);
-      console.log("newSquare $el", newSquare.$el)
-      console.log('newsquarelist', newSquareList)
     }, this);
     return this;
+  },
+
+  events: {
+    'click .square': 'play'
+  },
+
+  play: function() {
+    console.log("you clicked play!")
   }
 }); // end of BoardView
 

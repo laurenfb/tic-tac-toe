@@ -8,7 +8,7 @@ const ApplicationView = Backbone.View.extend({
   },
 
   render: function(){
-    console.log('rendering ApplicationView');
+    // console.log('rendering ApplicationView');
     const board = new BoardView({
       collection: this.model.board,
       el: this.$("#board-holder")
