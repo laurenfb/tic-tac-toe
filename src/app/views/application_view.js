@@ -18,7 +18,13 @@ const ApplicationView = Backbone.View.extend({
   },
 
   events: {
+    'click .btn-begin': 'startGame'
+  },
 
+  startGame: function(event) {
+    event.preventDefault();
+    alert(this)
+    alert('clicked it!')
   }
 })
 

@@ -90,6 +90,7 @@ const BoardView = Backbone.View.extend({
     console.log(this.collection.status)
     return this.collection.status;
   },
+
   horizontal: function() {
     var squares = this.collection.models
     for (var i = 0; i < 9; (i += 3)) { // note the i + 3 instead of i++
@@ -101,6 +102,7 @@ const BoardView = Backbone.View.extend({
     console.log(this.collection.status)
     return this.collection.status;
   },
+  
   diagonal: function() {
     var squares = this.collection.models
     // // top left ---> bottom right
