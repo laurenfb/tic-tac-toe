@@ -28,7 +28,7 @@ const BoardView = Backbone.View.extend({
     let square = clickedSquare.model;
     let board = this.collection;
 
-    console.log("you clicked play!", square.get("xAxis"), square.get("yAxis"))
+    // console.log("you clicked play!", square.get("xAxis"), square.get("yAxis"))
 
     if (square.get("contents") === "" && board.nextTurn <= 9 && board.status === "pending") {
       square.set("contents", this.chooseSymbol(board.nextTurn))
@@ -60,7 +60,7 @@ const BoardView = Backbone.View.extend({
   },
 
   findWinner: function() {
-    console.log('inside findwinner')
+    // console.log('inside findwinner')
     let possibleWins = [this.vertical(),
                         this.horizontal(),
                         this.diagonal()]
@@ -69,7 +69,7 @@ const BoardView = Backbone.View.extend({
         return possibleWins[i]
       }
     }
-    console.log('they were all pending')
+    // console.log('they were all pending')
     // if we got here, that means we didn't return any of the above. check if the status is pending, and if it is, then return the winner.
     let board = this.collection;
     if (board.status === "pending" && board.nextTurn === 10) {
