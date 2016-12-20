@@ -6,10 +6,8 @@ const Game = Backbone.Model.extend({
   },
 
   initialize: function(options) {
-    // this.set("playerX", formInput.playerX);
-    // this.set("playerO", formInput.playerO);
-    this.set("nextTurn", 1);
-    this.set("status", "pending");
+    this.set("playerX", "Player X");
+    this.set("playerO", "Player O");
 
     this.board = new Board(options.squares);
   }
