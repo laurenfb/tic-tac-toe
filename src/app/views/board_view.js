@@ -30,7 +30,7 @@ const BoardView = Backbone.View.extend({
 
     console.log("you clicked play!", square.get("xAxis"), square.get("yAxis"))
 
-    if (square.get("contents") === "" && board.nextTurn <= 9) {
+    if (square.get("contents") === "" && board.nextTurn <= 9 && board.status === "pending") {
       square.set("contents", this.chooseSymbol(board.nextTurn))
 
       // Board collection stores the nextTurn now, instead of a model
@@ -38,7 +38,7 @@ const BoardView = Backbone.View.extend({
       // in initialize. in this case we can't really save it to a database though.
       this.incrementTurn(board);
       this.findWinner();
-    } else if (board.nextTurn === 10) {
+    } else if (board.nextTurn === 10 || board.status != "pending") {
       alert("The game is over. Please begin a new game!")
     } else {
       alert("That spot has already been played. Please pick another.")
