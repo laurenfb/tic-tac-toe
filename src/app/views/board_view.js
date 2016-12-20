@@ -79,17 +79,39 @@ const BoardView = Backbone.View.extend({
   },
 
   vertical: function() {
-
-    console.log("inside vertical", this.collection.status)
-
+    var squares = this.collection.models
+    // looks complicated but it's not. the three vertical wins are 0-3-6, 1-4-7, 2-5-8 (i, i + 3, i + 6)
+    // this just checks all three of those to see if they correctly find the winner. it
+    for (var i = 0; i < 3; i++) {
+      if (squares[i].get("contents") == squares[i + 3].get("contents") && squares[i].get("contents") == squares[i + 6].get("contents") && squares[i].get("contents") != "") {
+        this.collection.status = squares[i].get("contents") + " wins!";
+      };
+    }
+    console.log(this.collection.status)
     return this.collection.status;
   },
   horizontal: function() {
-    console.log("inside horizontal")
+    var squares = this.collection.models
+    for (var i = 0; i < 9; (i += 3)) { // note the i + 3 instead of i++
+      // same as above --> i, i + 1, i + 2
+      if (squares[i].get("contents") == squares[i + 1].get("contents") && squares[i].get("contents") == squares[i + 2].get("contents") && squares[i].get("contents") != "") {
+        this.collection.status = squares[i].get("contents") + " wins!";
+      }
+    }
+    console.log(this.collection.status)
     return this.collection.status;
   },
   diagonal: function() {
-    console.log("inside diagonal")
+    var squares = this.collection.models
+    // // top left ---> bottom right
+    if (squares[0].get("contents") == squares[4].get("contents") && squares[0].get("contents") == squares[8].get("contents") && squares[0].get("contents") != "") {
+      this.collection.status = squares[4].get("contents") + " wins!"
+    }
+    // top right -----> bottom left
+    else if (squares[2].get("contents") == squares[4].get("contents") && squares[2].get("contents") == squares[6].get("contents") && squares[2].get("contents") != "") {
+      this.collection.status = squares[4].get("contents") + " wins!"
+    }
+    console.log(this.collection.status)
     return this.collection.status;
   }
 }); // end of BoardView
