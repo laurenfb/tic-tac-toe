@@ -27,15 +27,17 @@ const BoardView = Backbone.View.extend({
   play: function(clickedSquare) {
     let square = clickedSquare.model;
     let board = this.collection;
-    let squareContent = clickedSquare.$el[0].firstElementChild
+
     console.log("you clicked play!", square.get("xAxis"), square.get("yAxis"))
+
     if (square.get("contents") === "" && board.nextTurn <= 9) {
       square.set("contents", this.chooseSymbol(board.nextTurn))
-      // squareContent.append(this.chooseSymbol(board.nextTurn))
+
       // Board collection stores the nextTurn now, instead of a model
       // collections can't really have .get and .set, so it's just stored as an instance var
       // in initialize. in this case we can't really save it to a database though.
       this.incrementTurn(board);
+      this.findWinner();
     } else if (board.nextTurn === 10) {
       alert("The game is over. Please begin a new game!")
     } else {
@@ -55,6 +57,40 @@ const BoardView = Backbone.View.extend({
     } else {
       return "X"
     }
+  },
+
+  findWinner: function() {
+    console.log('inside findwinner')
+    let possibleWins = [this.vertical(),
+                        this.horizontal(),
+                        this.diagonal()]
+    for (var i = 0; i < possibleWins.length; i++) {
+      if (possibleWins[i] !== "pending") {
+        return possibleWins[i]
+      }
+    }
+    console.log('they were all pending')
+    // if we got here, that means we didn't return any of the above. check if the status is pending, and if it is, then return the winner.
+    let board = this.collection;
+    if (board.status === "pending" && board.nextTurn === 10) {
+      board.status = "tie!"
+      console.log('tie!')
+    }
+  },
+
+  vertical: function() {
+
+    console.log("inside vertical", this.collection.status)
+
+    return this.collection.status;
+  },
+  horizontal: function() {
+    console.log("inside horizontal")
+    return this.collection.status;
+  },
+  diagonal: function() {
+    console.log("inside diagonal")
+    return this.collection.status;
   }
 }); // end of BoardView
 

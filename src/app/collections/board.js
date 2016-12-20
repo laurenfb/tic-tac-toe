@@ -6,6 +6,7 @@ const Board = Backbone.Collection.extend({
 
   initialize: function(){
     this.nextTurn = 1;
+    this.status = "pending"
   }
 });
 
