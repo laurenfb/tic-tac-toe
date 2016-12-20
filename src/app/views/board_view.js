@@ -25,7 +25,13 @@ const BoardView = Backbone.View.extend({
   },
 
   play: function(clickedSquare) {
-    console.log("you clicked play!", clickedSquare.model.get("xAxis"), clickedSquare.model.get("yAxis"))
+    let square = clickedSquare.model
+    console.log("you clicked play!", square.get("xAxis"), square.get("yAxis"))
+    if (square.get("contents") === "") {
+      ////?????????
+    } else {
+      alert("That spot has already been played. Please pick another.")
+    }
   }
 }); // end of BoardView
 
