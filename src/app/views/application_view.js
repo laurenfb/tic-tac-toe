@@ -24,10 +24,10 @@ const ApplicationView = Backbone.View.extend({
   startGame: function(event) {
     event.preventDefault();
     let players = this.getNames();
-    console.log(players)
-    console.log('clicked it!')
+    this.model.set("playerX", players.playerX);
+    this.model.set("playerO", players.playerO)
+    console.log(this.model)
     $('#form-modal').hide();
-    console.log('got there')
   },
 
   getNames: function(event) {
