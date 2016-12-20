@@ -5,7 +5,7 @@ import Game from 'app/models/game'
 let game = new Game({
   squares: [
     {contents: "", xAxis: 0, yAxis: 0},
-    {contents: "X", xAxis: 0, yAxis: 1},
+    {contents: "", xAxis: 0, yAxis: 1},
     {contents: "", xAxis: 0, yAxis: 2},
     {contents: "", xAxis: 1, yAxis: 0},
     {contents: "", xAxis: 1, yAxis: 1},

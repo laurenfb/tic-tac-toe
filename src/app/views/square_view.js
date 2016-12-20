@@ -7,7 +7,7 @@ const SquareView = Backbone.View.extend({
 
   initialize: function() {
     this.template = _.template(Backbone.$('#square-template').html());
-    this.listenTo(this.model, "change", this.render);
+    this.listenTo(this.model, "change", this.render)
   },
 
   events: {
