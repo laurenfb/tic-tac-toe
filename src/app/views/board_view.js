@@ -13,24 +13,19 @@ const BoardView = Backbone.View.extend({
     // console.log("this is the new square list", newSquareList)
     newSquareList.empty();
 
-    const self = this;
-
     this.collection.forEach(function(square) {
       const newSquare = new SquareView({
         model: square
       });
-      //  self.listenTo(card, 'select', self.showCard);
+      // listen to the custom event in Square View that is called "squareClicked", which will tell us where to play.
+      this.listenTo(newSquare, 'squareClicked', this.play);
       newSquareList.append(newSquare.render().$el);
     }, this);
     return this;
   },
 
-  events: {
-    'click .square': 'play'
-  },
-
-  play: function() {
-    console.log("you clicked play!")
+  play: function(clickedSquare) {
+    console.log("you clicked play!", clickedSquare.model.get("xAxis"), clickedSquare.model.get("yAxis"))
   }
 }); // end of BoardView
 
