@@ -28,9 +28,21 @@ const BoardView = Backbone.View.extend({
     let square = clickedSquare.model
     console.log("you clicked play!", square.get("xAxis"), square.get("yAxis"))
     if (square.get("contents") === "") {
-      ////?????????
+      var board = this.collection;
+      // Board collection stores the nextTurn now, instead of a model
+      // collections can't really have .get and .set, so it's just stored as an instance var
+      // in initialize. in this case we can't really save it to a database though.
+      console.log("before", board.nextTurn)
+      this.incrementTurn(board);
+      console.log("after", board.nextTurn)
     } else {
       alert("That spot has already been played. Please pick another.")
+    }
+  },
+
+  incrementTurn: function(board) {
+    if (board.nextTurn <= 9) {
+      board.nextTurn += 1;
     }
   }
 }); // end of BoardView
