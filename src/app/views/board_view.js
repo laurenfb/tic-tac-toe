@@ -25,16 +25,19 @@ const BoardView = Backbone.View.extend({
   },
 
   play: function(clickedSquare) {
-    let square = clickedSquare.model
+    let square = clickedSquare.model;
+    let board = this.collection;
+    let squareContent = clickedSquare.$el[0].firstElementChild
     console.log("you clicked play!", square.get("xAxis"), square.get("yAxis"))
-    if (square.get("contents") === "") {
-      var board = this.collection;
+    if (square.get("contents") === "" && board.nextTurn <= 9) {
+      square.set("contents", this.chooseSymbol(board.nextTurn))
+      // squareContent.append(this.chooseSymbol(board.nextTurn))
       // Board collection stores the nextTurn now, instead of a model
       // collections can't really have .get and .set, so it's just stored as an instance var
       // in initialize. in this case we can't really save it to a database though.
-      console.log("before", board.nextTurn)
       this.incrementTurn(board);
-      console.log("after", board.nextTurn)
+    } else if (board.nextTurn === 10) {
+      alert("The game is over. Please begin a new game!")
     } else {
       alert("That spot has already been played. Please pick another.")
     }
@@ -43,6 +46,14 @@ const BoardView = Backbone.View.extend({
   incrementTurn: function(board) {
     if (board.nextTurn <= 9) {
       board.nextTurn += 1;
+    }
+  },
+
+  chooseSymbol: function(nextTurn) {
+    if (nextTurn % 2 === 0) {
+      return "O"
+    } else {
+      return "X"
     }
   }
 }); // end of BoardView
