@@ -79,7 +79,7 @@ const ApplicationView = Backbone.View.extend({
 
   saveGameToAPI: function(game) {
     // write code here to save the game to the database
-    let outcome = (game.board.status === "tie"? "draw" : game.board.status[0]);
+    let outcome = (game.board.status === "tie!"? "draw" : game.board.status[0]);
     let x = game.get("playerX");
     let o = game.get("playerO");
     let boardForAPI = [];
