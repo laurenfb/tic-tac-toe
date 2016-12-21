@@ -30,6 +30,7 @@ const ApplicationView = Backbone.View.extend({
   startGame: function(event) {
     event.preventDefault();
     let players = this.getNames();
+    // players have default names if names are not entered.
     if (players.playerX != "") {
       this.model.set("playerX", players.playerX);
     }
