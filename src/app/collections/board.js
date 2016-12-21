@@ -24,8 +24,7 @@ const Board = Backbone.Collection.extend({
     // if we got here, that means we didn't return any of the above. check if the status is pending, and if it is, then return the winner.
     // let board = this;
     if (this.status === "pending" && this.nextTurn === 10) {
-      this.status = "tie!"
-      console.log('tie!')
+      this.status = "tie!";
     }
     return this.status;
   },

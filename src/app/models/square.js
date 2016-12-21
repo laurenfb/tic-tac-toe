@@ -11,23 +11,7 @@ const Square = Backbone.Model.extend({
     this.set("contents", options.contents);
     this.set("xAxis", options.xAxis);
     this.set("yAxis", options.yAxis)
-  },
-
-  checkOccupied: function() {
-    var occupied;
-    (this.contents != "") ? (occupied = true) : (occupied = false);
-    return occupied;
   }
-
-  // ,play: function() {
-  //   if (!this.checkOccupied) {
-  //     if () {
-  //       this.set("contents", "X")
-  //     } else {
-  //       this.set("contents", "O")
-  //     }
-  //   }
-  // }
 
 });
 

@@ -22,7 +22,7 @@ const SquareView = Backbone.View.extend({
   },
 
   selectSquare: function() {
-    console.log('selectSquare is firing')
+    // console.log('selectSquare is firing')
     this.trigger('squareClicked', this)
 
     // jeannie says to do this and rolodex told her to do this

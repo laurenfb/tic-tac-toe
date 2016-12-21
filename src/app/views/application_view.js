@@ -15,7 +15,6 @@ const ApplicationView = Backbone.View.extend({
       collection: this.model.board,
       el: this.$("#board-holder")
     })
-    console.log("board", board)
     this.listenTo(board, 'finishGame', this.gameOver)
 
     board.render();
@@ -24,7 +23,8 @@ const ApplicationView = Backbone.View.extend({
 
   events: {
     'click .btn-begin': 'startGame',
-    'click .btn-restart': 'clearOldGame'
+    'click .btn-restart': 'clearOldGame',
+    'click .btn-cancel': 'clearForm'
   },
 
   startGame: function(event) {
@@ -50,8 +50,8 @@ const ApplicationView = Backbone.View.extend({
 
   gameOver: function(event) {
     let winner;
-    if (this.model.board.status === 'tie') {
-      winner = this.model.board.status;
+    if (this.model.board.status === 'tie!') {
+      winner = "it's a tie!";
     } else {
       winner = this.model.get("player" + this.model.board.status[0]) + " wins!"
     }
@@ -66,6 +66,11 @@ const ApplicationView = Backbone.View.extend({
     this.render();
     $("#winner-modal").hide();
     $("#form-modal").show();
+  },
+
+  clearForm: function(event) {
+    this.$('input[name="playerX"]').val("");
+    this.$('input[name="playerO"]').val("")
   }
 
 
