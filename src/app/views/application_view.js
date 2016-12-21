@@ -33,7 +33,7 @@ const ApplicationView = Backbone.View.extend({
   getNames: function(event) {
     let players = {
         playerX: this.$('input[name="playerX"]').val(),
-        playerO: this.$('input[name="playerX"]').val()
+        playerO: this.$('input[name="playerO"]').val()
       };
     return players;
   }
