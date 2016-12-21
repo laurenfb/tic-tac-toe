@@ -15,23 +15,10 @@
       </header>
     <div class='row'>
       <section class='small-12 medium-6 columns'>
-        <div id='winner-modal'>
+        <div id='modal'>
         </div>
         <div id='form-modal'>
-          <form>
-            <div class>
-              <label>
-                player x
-                <input type="text" name="playerX">
-              </label>
-              <label>
-                player o
-                <input type="text" name="playerO">
-              </label>
-              <button type="submit" class="button btn-begin">begin!</button>
-              <button type="button" class="button btn-cancel">clear</button>
-            </div>
-          </form>
+
         </div>
       </section>
 
@@ -46,7 +33,19 @@
   <script type="text/template" id="winner-modal-template">
     <h4><%- winStatus %></h4>
     <button type='button' class='button btn-restart'>new game</button>
-</script>
+  </script>
+  <script type="text/template" id="form-modal-template"><form>
+      <label>
+        player x
+        <input type="text" name="playerX">
+      </label>
+      <label>
+        player o
+        <input type="text" name="playerO">
+      </label>
+      <button type="submit" class="button btn-begin">begin!</button>
+      <button type="button" class="button btn-cancel">clear</button>
+  </form></script>
 
 
   <!-- Entire JS project built by Webpack -->

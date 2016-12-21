@@ -1,14 +1,15 @@
 header{
   text-align: center;
   width: 100%;
-  background-color: gold;
+  background-color: black;
   margin-bottom: 4vh;
-  padding: 1% 0 1% 0;
+  padding: 1% 0 1% 0
 }
 
 h1{
   font-size: 5em;
   color: white;
+  font-weight: bolder;
 }
 
 .square {
@@ -41,20 +42,14 @@ h1{
   margin: auto;
 }
 
-#winner-modal, #form-modal {
+#modal {
   z-index: 10;
-  /*position: absolute;*/
   width: auto;
   height: auto;
   text-align: center;
-  border: 10px solid rgba(47, 53, 54, 0.84);
-  /*margin: 10% 0 0 35%;*/
-  border-radius: 20%;
+  border: 10px solid black;
+  border-radius: 2%;
   padding: 12%;
   color: rgb(14, 60, 70);
   font-weight: bolder;
-}
-
-#winner-modal {
-  display: none;
 }
