@@ -30,9 +30,13 @@ const ApplicationView = Backbone.View.extend({
   startGame: function(event) {
     event.preventDefault();
     let players = this.getNames();
-    this.model.set("playerX", players.playerX);
-    this.model.set("playerO", players.playerO)
-    console.log(this.model)
+    if (players.playerX != "") {
+      this.model.set("playerX", players.playerX);
+    }
+    if (players.playerO != "") {
+      this.model.set("playerO", players.playerO)
+    }
+    // console.log(this.model)
     $('#form-modal').hide();
   },
 
@@ -45,16 +49,23 @@ const ApplicationView = Backbone.View.extend({
   },
 
   gameOver: function(event) {
-    // CURRENTLY ONLY WORKS FOR X OR O WINS
-    var winner = this.model.get("player" + this.model.board.status[0])
-    console.log("the game is over")
-    console.log(winner)
+    let winner;
+    if (this.model.board.status === 'tie') {
+      winner = this.model.board.status;
+    } else {
+      winner = this.model.get("player" + this.model.board.status[0]) + " wins!"
+    }
     $('#winner-modal').html(this.winnerModalTemplate({winStatus: winner}));
     $('#winner-modal').show();
   },
 
   clearOldGame: function(event) {
-    this.model.clear();
+    console.log('yo you clicked new game')
+    this.model.resetBoard();
+    // re-render the board
+    this.render();
+    $("#winner-modal").hide();
+    $("#form-modal").show();
   }
 
 
