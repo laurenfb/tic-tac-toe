@@ -5,6 +5,14 @@ const Game = Backbone.Model.extend({
   defaults: {
   },
 
+  // we're connecting to the API here, using Backbone
+  url: 'https://lauren-tic-tac-toe.herokuapp.com/api/v1/games',
+  // don't need a parse, because getting all games comes back as an array
+  // parse: function(data) {
+  //
+  // },
+
+
   initialize: function(options) {
     this.set("playerX", "Player X");
     this.set("playerO", "Player O");

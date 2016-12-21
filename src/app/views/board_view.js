@@ -28,17 +28,18 @@ const BoardView = Backbone.View.extend({
     let square = clickedSquare.model;
     let board = this.collection;
 
-    // console.log("you clicked play!", square.get("xAxis"), square.get("yAxis"))
-
     if (square.get("contents") === "" && board.nextTurn <= 9 && board.status === "pending") {
+      // if the square is empty, there have been fewer than 9 turns, and no one has won yet,
+      // place the appropriate symbol in the square.
       square.set("contents", this.chooseSymbol(board.nextTurn))
 
       // Board collection stores the nextTurn now, instead of a model
       // collections can't really have .get and .set, so it's just stored as an instance var
       // in initialize. in this case we can't really save it to a database though.
       this.incrementTurn(board);
-      let win = board.findWinner();
+
       // trigger an event if the game has been won or is tied (aka is not pending)
+      let win = board.findWinner();
       if (win !== "pending") {
         this.trigger('finishGame', this)
       }
