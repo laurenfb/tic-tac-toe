@@ -1,10 +1,12 @@
 import Backbone from 'backbone';
 import $ from 'jquery';
 import Game from '../models/game';
-import BoardView from '../views/board_view'
+import BoardView from '../views/board_view';
+import _ from 'underscore';
 
 const ApplicationView = Backbone.View.extend({
   initialize: function() {
+    this.winnerModalTemplate = _.template($('#winner-modal-template').html())
   },
 
   render: function(){
@@ -21,7 +23,8 @@ const ApplicationView = Backbone.View.extend({
   },
 
   events: {
-    'click .btn-begin': 'startGame'
+    'click .btn-begin': 'startGame',
+    'click .btn-restart': 'clearOldGame'
   },
 
   startGame: function(event) {
@@ -42,9 +45,19 @@ const ApplicationView = Backbone.View.extend({
   },
 
   gameOver: function(event) {
+    // CURRENTLY ONLY WORKS FOR X OR O WINS
+    var winner = this.model.get("player" + this.model.board.status[0])
     console.log("the game is over")
+    console.log(winner)
+    $('#winner-modal').html(this.winnerModalTemplate({winStatus: winner}));
     $('#winner-modal').show();
+  },
+
+  clearOldGame: function(event) {
+    this.model.clear();
   }
+
+
 
 })
 

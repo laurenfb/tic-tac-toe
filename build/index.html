@@ -17,7 +17,6 @@
 
 <div id="board-and-modal-holder">
   <div id='winner-modal'>
-    hiiiiiii
   </div>
   <div id='form-modal'>
     <form class="names-form">
@@ -47,6 +46,11 @@
   <script type="text/template" id="square-template">
       <div class="square-content"><%- contents %></div>
   </script>
+  <script type="text/template" id="winner-modal-template">
+    <h4><%- winStatus %></h4>
+    <button type='button' class='button btn-restart'>new game</button>
+</script>
+
 
   <!-- Entire JS project built by Webpack -->
     <script src="/app.bundle.js" charset="utf-8"></script>
