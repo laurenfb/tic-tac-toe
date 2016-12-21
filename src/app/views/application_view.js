@@ -64,7 +64,7 @@ const ApplicationView = Backbone.View.extend({
   },
 
   clearOldGame: function(event) {
-    console.log('yo you clicked new game')
+    // console.log('yo you clicked new game')
     this.model.resetBoard();
     // re-render the board
     this.render();

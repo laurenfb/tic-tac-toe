@@ -1,16 +1,13 @@
-names-form{
-  width: 100%;
-}
-
-.top-header{
+header{
   text-align: center;
   width: 100%;
   background-color: gold;
+  margin-bottom: 4vh;
+  padding: 1% 0 1% 0;
 }
 
 h1{
   font-size: 5em;
-  background-color: rgb(0, 31, 143);
   color: white;
 }
 
@@ -22,6 +19,7 @@ h1{
   margin: 1.66%;
   overflow: hidden;
   background-color: rgb(100, 165, 224);
+  opacity: 0.9;
 }
 
 .square:hover{
@@ -45,13 +43,12 @@ h1{
 
 #winner-modal, #form-modal {
   z-index: 10;
-  position: absolute;
+  /*position: absolute;*/
   width: auto;
   height: auto;
-  background-color: rgb(140, 193, 189);
   text-align: center;
   border: 10px solid rgba(47, 53, 54, 0.84);
-  margin: 10% 0 0 35%;
+  /*margin: 10% 0 0 35%;*/
   border-radius: 20%;
   padding: 12%;
   color: rgb(14, 60, 70);
@@ -60,8 +57,4 @@ h1{
 
 #winner-modal {
   display: none;
-}
-
-#winner-modal:hover {
-  background-color: white;
 }

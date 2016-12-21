@@ -9,35 +9,34 @@
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
-    <div class='row'>
-      <header class='top-header'>
+
+      <header>
         <h1>tic tac toe</h1>
       </header>
-      </div>
+    <div class='row'>
+      <section class='small-12 medium-6 columns'>
+        <div id='winner-modal'>
+        </div>
+        <div id='form-modal'>
+          <form>
+            <div class>
+              <label>
+                player x
+                <input type="text" name="playerX">
+              </label>
+              <label>
+                player o
+                <input type="text" name="playerO">
+              </label>
+              <button type="submit" class="button btn-begin">begin!</button>
+              <button type="button" class="button btn-cancel">clear</button>
+            </div>
+          </form>
+        </div>
+      </section>
 
-  <div id='winner-modal'>
-  </div>
-  <div id='form-modal'>
-    <form class="names-form">
-      <div class>
-        <label>
-          player x
-          <input type="text" name="playerX">
-        </label>
-        <label>
-          player o
-          <input type="text" name="playerO">
-        </label>
-        <button type="submit" class="button btn-begin">begin!</button>
-        <button type="button" class="button btn-cancel">clear</button>
-      </div>
-    </form>
-  </div>
-  <main id="board-holder">
-
-  </main>
-
-
+      <main class='small-12 medium-6 columns' id="board-holder"></main>
+    </div>
 
 
     <!-- Underscore Templates -->
