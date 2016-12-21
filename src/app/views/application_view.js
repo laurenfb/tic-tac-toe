@@ -43,6 +43,7 @@ const ApplicationView = Backbone.View.extend({
 
   gameOver: function(event) {
     console.log("the game is over")
+    $('#winner-modal').show();
   }
 
 })

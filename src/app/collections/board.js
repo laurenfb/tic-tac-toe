@@ -27,6 +27,7 @@ const Board = Backbone.Collection.extend({
       this.status = "tie!"
       console.log('tie!')
     }
+    return this.status;
   },
 
   vertical: function() {
