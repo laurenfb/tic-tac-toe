@@ -11,74 +11,46 @@
   <body>
     <div class='row'>
       <header class='top-header'>
-        <form class="names-form">
-          <div class='medium-6 columns'>
-            <h1>tic-tac-toe</h1>
-          </div>
-          <div class="medium-4 columns">
-            <label>
-              player x
-              <input type="text" name="player-x">
-            </label>
-            <label>
-              player o
-              <input type="text" name="player-o">
-            </label>
-            <button type="submit" class="button btn-save">begin!</button>
-            <button type="button" class="button btn-cancel">cancel</button>
-          </div>
-          </form>
-        </header>
+        <h1>tic tac toe</h1>
+      </header>
       </div>
-    <main class="board-holder">
-        <div class="square">
-            <div class="square-content">
-                X
-            </div>
-        </div><div class="square">
-            <div class="square-content">
-                X
-            </div>
-        </div><div class="square">
-            <div class="square-content">
-                X
-            </div>
-        </div><div class="square">
-            <div class="square-content">
-                X
-            </div>
-        </div><div class="square">
-            <div class="square-content">
-                X
-            </div>
-        </div><div class="square">
-            <div class="square-content">
-                X
-            </div>
-        </div><div class="square">
-            <div class="square-content">
-                X
-            </div>
-        </div><div class="square">
-            <div class="square-content">
-                X
-            </div>
-        </div><div class="square">
-            <div class="square-content">
-                X
-            </div>
-        </div>
-    </main>
+
+<div id="board-and-modal-holder">
+  <div id='winner-modal'>
+  </div>
+  <div id='form-modal'>
+    <form class="names-form">
+      <div class>
+        <label>
+          player x
+          <input type="text" name="playerX">
+        </label>
+        <label>
+          player o
+          <input type="text" name="playerO">
+        </label>
+        <button type="submit" class="button btn-begin">begin!</button>
+        <button type="button" class="button btn-cancel">clear</button>
+      </div>
+    </form>
+  </div>
+  <main id="board-holder">
+
+  </main>
+</div>
+
 
 
 
     <!-- Underscore Templates -->
-  <script type="text/template" id="board-template">
-
-  </script>
-
   <script type="text/template" id="square-template">
+      <div class="square-content"><%- contents %></div>
   </script>
+  <script type="text/template" id="winner-modal-template">
+    <h4><%- winStatus %></h4>
+    <button type='button' class='button btn-restart'>new game</button>
+</script>
+
 
   <!-- Entire JS project built by Webpack -->
     <script src="/app.bundle.js" charset="utf-8"></script>

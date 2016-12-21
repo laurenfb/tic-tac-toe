@@ -38,7 +38,30 @@ h1{
   color: white;
 }
 
-.board-holder{
+#board-holder{
   max-width: 550px;
   margin: auto;
+}
+
+#winner-modal, #form-modal {
+  z-index: 10;
+  position: absolute;
+  width: auto;
+  height: auto;
+  background-color: rgb(140, 193, 189);
+  text-align: center;
+  border: 10px solid rgba(47, 53, 54, 0.84);
+  margin: 10% 0 0 35%;
+  border-radius: 20%;
+  padding: 12%;
+  color: rgb(14, 60, 70);
+  font-weight: bolder;
+}
+
+#winner-modal {
+  display: none;
+}
+
+#winner-modal:hover {
+  background-color: white;
 }
