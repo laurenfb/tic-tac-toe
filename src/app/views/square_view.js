@@ -1,5 +1,6 @@
 import Backbone from 'backbone';
 import _ from 'underscore';
+import $ from 'jquery';
 
 const SquareView = Backbone.View.extend({
   tagName: 'div',
@@ -23,9 +24,10 @@ const SquareView = Backbone.View.extend({
 
   selectSquare: function() {
     // console.log('selectSquare is firing')
-    this.trigger('squareClicked', this)
-
-    // jeannie says to do this and rolodex told her to do this
+    if (!($('#form-modal').is(':visible'))) {
+      this.trigger('squareClicked', this)
+    }
+    // jeannie says to do this and rolodex told her to do this so other event handlers are not triggered
     return false
   }
 
