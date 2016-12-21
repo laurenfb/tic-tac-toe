@@ -16,6 +16,7 @@ const Board = Backbone.Collection.extend({
                         this.diagonal()]
     for (var i = 0; i < possibleWins.length; i++) {
       if (possibleWins[i] !== "pending") {
+        // console.log(this.status)
         return possibleWins[i]
       }
     }

@@ -13,6 +13,9 @@ const ApplicationView = Backbone.View.extend({
       collection: this.model.board,
       el: this.$("#board-holder")
     })
+    console.log("board", board)
+    this.listenTo(board, 'finishGame', this.gameOver)
+
     board.render();
     return this;
   },
@@ -36,7 +39,12 @@ const ApplicationView = Backbone.View.extend({
         playerO: this.$('input[name="playerO"]').val()
       };
     return players;
+  },
+
+  gameOver: function(event) {
+    console.log("the game is over")
   }
+
 })
 
 export default ApplicationView;

@@ -37,7 +37,11 @@ const BoardView = Backbone.View.extend({
       // collections can't really have .get and .set, so it's just stored as an instance var
       // in initialize. in this case we can't really save it to a database though.
       this.incrementTurn(board);
-      this.collection.findWinner();
+      let win = this.collection.findWinner();
+      // trigger an event if the game has been won or is tied (aka is not pending)
+      if (win !== "pending") {
+        this.trigger('finishGame', this)
+      }
     } else if (board.nextTurn === 10 || board.status != "pending") {
       alert("The game is over. Please begin a new game!")
     } else {
