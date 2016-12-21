@@ -50,6 +50,9 @@ const ApplicationView = Backbone.View.extend({
   },
 
   gameOver: function(event) {
+    // call saveGameToAPI() here to save the game to API.
+    // make sure to account for errors (did not in trek and got dinged for it)
+    this.saveGameToAPI(this.model);
     let winner;
     if (this.model.board.status === 'tie!') {
       winner = "it's a tie!";
@@ -72,10 +75,29 @@ const ApplicationView = Backbone.View.extend({
   clearForm: function(event) {
     this.$('input[name="playerX"]').val("");
     this.$('input[name="playerO"]').val("")
+  },
+
+  saveGameToAPI: function(game) {
+    // write code here to save the game to the database
+    let outcome = (game.board.status === "tie"? "draw" : game.board.status[0]);
+    let x = game.get("playerX");
+    let o = game.get("playerO");
+    let boardForAPI = [];
+    for (var i = 0; i < game.board.models.length; i++) {
+      if (game.board.models[i].get("contents") == "") {
+        boardForAPI.push(" ")
+      } else {
+        boardForAPI.push(game.board.models[i].get("contents"))
+      }
+
+    }
+    let gameToSave = {
+      "board": boardForAPI,
+      "players": [x, o],
+      "outcome": outcome
+    }
+    game.save(gameToSave);
   }
-
-
-
 })
 
 export default ApplicationView;
