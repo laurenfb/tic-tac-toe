@@ -1,10 +1,11 @@
 import $ from 'jquery';
 import Backbone from 'backbone';
-import SquareView from 'app/views/square_view'
+import SquareView from 'app/views/square_view';
+import _ from 'underscore'
 
 const BoardView = Backbone.View.extend({
   initialize: function(){
-    // this.template = _.template($('#board-template'))
+    this.alertTemplate = _.template($('#alert-template').html())
   },
 
   render: function() {
@@ -34,8 +35,8 @@ const BoardView = Backbone.View.extend({
       square.set("contents", this.chooseSymbol(board.nextTurn))
 
       // Board collection stores the nextTurn now, instead of a model
-      // collections can't really have .get and .set, so it's just stored as an instance var
-      // in initialize. in this case we can't really save it to a database though.
+      // word on the street is that collections can't really have
+      // .get and .set, so it's just stored as an instance var in initialize.
       this.incrementTurn(board);
 
       // trigger an event if the game has been won or is tied (aka is not pending)
