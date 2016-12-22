@@ -24,9 +24,9 @@ const SquareView = Backbone.View.extend({
 
   selectSquare: function() {
     // console.log('selectSquare is firing')
-    if (!($('#form-modal').is(':visible'))) {
+    // if (!($('#form-modal').is(':visible'))) {
       this.trigger('squareClicked', this)
-    }
+    // }
     // jeannie says to do this and rolodex told her to do this so other event handlers are not triggered
     return false
   }

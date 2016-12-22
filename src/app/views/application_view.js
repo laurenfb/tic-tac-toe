@@ -7,6 +7,7 @@ import _ from 'underscore';
 const ApplicationView = Backbone.View.extend({
   initialize: function() {
     this.winnerModalTemplate = _.template($('#winner-modal-template').html())
+    this.formModalTemplate = _.template($('#form-modal-template').html())
   },
 
   render: function(){
@@ -15,6 +16,7 @@ const ApplicationView = Backbone.View.extend({
       collection: this.model.board,
       el: this.$("#board-holder")
     })
+    $("#modal").html(this.formModalTemplate)
     this.listenTo(board, 'finishGame', this.gameOver)
 
     board.render();
@@ -38,7 +40,7 @@ const ApplicationView = Backbone.View.extend({
       this.model.set("playerO", players.playerO)
     }
     // console.log(this.model)
-    $('#form-modal').hide();
+    $('#modal').empty();
   },
 
   getNames: function(event) {
@@ -59,8 +61,7 @@ const ApplicationView = Backbone.View.extend({
     } else {
       winner = this.model.get("player" + this.model.board.status[0]) + " wins!"
     }
-    $('#winner-modal').html(this.winnerModalTemplate({winStatus: winner}));
-    $('#winner-modal').show();
+    $('#modal').html(this.winnerModalTemplate({winStatus: winner}));
   },
 
   clearOldGame: function(event) {
@@ -68,8 +69,6 @@ const ApplicationView = Backbone.View.extend({
     this.model.resetBoard();
     // re-render the board
     this.render();
-    $("#winner-modal").hide();
-    $("#form-modal").show();
   },
 
   clearForm: function(event) {
