@@ -14,8 +14,8 @@ const Game = Backbone.Model.extend({
 
 
   initialize: function(options) {
-    this.set("playerX", "Player X");
-    this.set("playerO", "Player O");
+    this.set("playerX", "player X");
+    this.set("playerO", "player O");
 
     this.board = new Board(options.squares);
   },
