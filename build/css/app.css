@@ -1,17 +1,15 @@
-names-form{
-  width: 100%;
-}
-
-.top-header{
+header{
   text-align: center;
   width: 100%;
-  background-color: gold;
+  background-color: black;
+  margin-bottom: 4vh;
+  padding: 1% 0 1% 0
 }
 
 h1{
   font-size: 5em;
-  background-color: rgb(0, 31, 143);
   color: white;
+  font-weight: bolder;
 }
 
 .square {
@@ -21,11 +19,11 @@ h1{
   padding-bottom: 30%; /* = width for a 1:1 aspect ratio */
   margin: 1.66%;
   overflow: hidden;
-  background-color: rgb(100, 165, 224);
+  background-color: gold;
 }
 
 .square:hover{
-  background-color: rgb(0, 31, 143)
+  background-color: black;
 }
 
 .square-content {
@@ -43,25 +41,18 @@ h1{
   margin: auto;
 }
 
-#winner-modal, #form-modal {
+#modal {
   z-index: 10;
-  position: absolute;
   width: auto;
   height: auto;
-  background-color: rgb(140, 193, 189);
   text-align: center;
-  border: 10px solid rgba(47, 53, 54, 0.84);
-  margin: 10% 0 0 35%;
-  border-radius: 20%;
+  border: 10px solid black;
+  border-radius: 2%;
   padding: 12%;
   color: rgb(14, 60, 70);
   font-weight: bolder;
 }
 
-#winner-modal {
-  display: none;
-}
-
-#winner-modal:hover {
-  background-color: white;
+.alert{
+  color: red
 }

@@ -1,12 +1,13 @@
 import Backbone from 'backbone';
 import _ from 'underscore';
+import $ from 'jquery';
 
 const SquareView = Backbone.View.extend({
   tagName: 'div',
   className: 'square',
 
   initialize: function() {
-    this.template = _.template(Backbone.$('#square-template').html());
+    this.template = _.template($('#square-template').html());
     this.listenTo(this.model, "change", this.render)
   },
 
@@ -22,14 +23,10 @@ const SquareView = Backbone.View.extend({
   },
 
   selectSquare: function() {
-    // console.log('selectSquare is firing')
     this.trigger('squareClicked', this)
-
-    // jeannie says to do this and rolodex told her to do this
+    // jeannie says to do this and rolodex told her to do this so other event handlers are not triggered
     return false
   }
-
-
 
 }); // end of SquareView
 

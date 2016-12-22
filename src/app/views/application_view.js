@@ -7,6 +7,8 @@ import _ from 'underscore';
 const ApplicationView = Backbone.View.extend({
   initialize: function() {
     this.winnerModalTemplate = _.template($('#winner-modal-template').html())
+    this.formModalTemplate = _.template($('#form-modal-template').html())
+    this.turnModalTemplate = _.template($('#turn-modal-template').html())
   },
 
   render: function(){
@@ -15,7 +17,9 @@ const ApplicationView = Backbone.View.extend({
       collection: this.model.board,
       el: this.$("#board-holder")
     })
+    $("#modal").html(this.formModalTemplate())
     this.listenTo(board, 'finishGame', this.gameOver)
+    this.listenTo(board, 'switchPlayer', this.nameInModal)
 
     board.render();
     return this;
@@ -38,7 +42,8 @@ const ApplicationView = Backbone.View.extend({
       this.model.set("playerO", players.playerO)
     }
     // console.log(this.model)
-    $('#form-modal').hide();
+    // $('#modal').empty();
+    this.nameInModal();
   },
 
   getNames: function(event) {
@@ -59,27 +64,36 @@ const ApplicationView = Backbone.View.extend({
     } else {
       winner = this.model.get("player" + this.model.board.status[0]) + " wins!"
     }
-    $('#winner-modal').html(this.winnerModalTemplate({winStatus: winner}));
-    $('#winner-modal').show();
+    $('#modal').html(this.winnerModalTemplate({winStatus: winner}));
   },
 
   clearOldGame: function(event) {
-    console.log('yo you clicked new game')
+    // console.log('yo you clicked new game')
     this.model.resetBoard();
     // re-render the board
     this.render();
-    $("#winner-modal").hide();
-    $("#form-modal").show();
+  },
+
+  nameInModal: function(event) {
+    let nextPlayer;
+    if (this.model.board.nextTurn % 2 === 0) {
+      nextPlayer = this.model.get("playerO")
+    } else {
+      nextPlayer = this.model.get("playerX")
+    }
+    // grab the next player and put them into the turn modal
+    $('#modal').html(this.turnModalTemplate({turn: nextPlayer + "'s turn!"}))
+
   },
 
   clearForm: function(event) {
-    this.$('input[name="playerX"]').val("");
-    this.$('input[name="playerO"]').val("")
+    $('input[name="playerX"]').val("");
+    $('input[name="playerO"]').val("")
   },
 
   saveGameToAPI: function(game) {
     // write code here to save the game to the database
-    let outcome = (game.board.status === "tie"? "draw" : game.board.status[0]);
+    let outcome = (game.board.status === "tie!"? "draw" : game.board.status[0]);
     let x = game.get("playerX");
     let o = game.get("playerO");
     let boardForAPI = [];
