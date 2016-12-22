@@ -45,9 +45,11 @@ const BoardView = Backbone.View.extend({
         this.trigger('finishGame', this)
       }
     } else if (board.nextTurn === 10 || board.status != "pending") {
-      alert("The game is over. Please begin a new game!")
+      $("#modal").find('.alert').remove()
+      $("#modal").prepend(this.alertTemplate({alert: "game over. begin a new game!"}))
     } else {
-      alert("That spot has already been played. Please pick another.")
+      $("#modal").find('.alert').remove()
+      $("#modal").prepend(this.alertTemplate({alert: "spot full. please pick another!"}))
     }
   },
 
