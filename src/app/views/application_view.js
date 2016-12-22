@@ -28,7 +28,8 @@ const ApplicationView = Backbone.View.extend({
   events: {
     'click .btn-begin': 'startGame',
     'click .btn-restart': 'clearOldGame',
-    'click .btn-cancel': 'clearForm'
+    'click .btn-cancel': 'clearForm',
+    'click .btn-fetch': 'getAPIHistory'
   },
 
   startGame: function(event) {
@@ -111,7 +112,12 @@ const ApplicationView = Backbone.View.extend({
       "outcome": outcome
     }
     game.save(gameToSave);
+  },
+
+  getAPIHistory: function() {
+    this.model.fetch();
   }
+
 })
 
 export default ApplicationView;

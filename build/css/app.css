@@ -41,7 +41,7 @@ h1{
   margin: auto;
 }
 
-#modal {
+#modal, #API-ref {
   z-index: 10;
   width: auto;
   height: auto;
@@ -51,6 +51,10 @@ h1{
   padding: 12%;
   color: rgb(14, 60, 70);
   font-weight: bolder;
+}
+
+#API-ref{
+  margin-top: 10%;
 }
 
 .alert{
