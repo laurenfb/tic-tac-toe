@@ -8,6 +8,7 @@ const ApplicationView = Backbone.View.extend({
   initialize: function() {
     this.winnerModalTemplate = _.template($('#winner-modal-template').html())
     this.formModalTemplate = _.template($('#form-modal-template').html())
+    this.turnModalTemplate = _.template($('#turn-modal-template').html())
   },
 
   render: function(){
@@ -41,7 +42,8 @@ const ApplicationView = Backbone.View.extend({
       this.model.set("playerO", players.playerO)
     }
     // console.log(this.model)
-    $('#modal').empty();
+    // $('#modal').empty();
+    this.nameInModal();
   },
 
   getNames: function(event) {
@@ -79,13 +81,14 @@ const ApplicationView = Backbone.View.extend({
     } else {
       nextPlayer = this.model.get("playerX")
     }
-    console.log(nextPlayer)
-    return nextPlayer;
+    // grab the next player and put them into the turn modal
+    $('#modal').html(this.turnModalTemplate({turn: nextPlayer + "'s turn!"}))
+
   },
 
   clearForm: function(event) {
-    this.$('input[name="playerX"]').val("");
-    this.$('input[name="playerO"]').val("")
+    $('input[name="playerX"]').val("");
+    $('input[name="playerO"]').val("")
   },
 
   saveGameToAPI: function(game) {
