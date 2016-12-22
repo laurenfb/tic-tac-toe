@@ -38,11 +38,11 @@
     <form>
       <label>
         player x
-        <input type="text" name="playerX">
+        <input type="text" name="playerX" value="<%- this.model.get('playerX') %>">
       </label>
       <label>
         player o
-        <input type="text" name="playerO">
+        <input type="text" name="playerO" value="<%- this.model.get('playerO') %>">
       </label>
       <button type="submit" class="button btn-begin">begin!</button>
       <button type="button" class="button btn-cancel">clear</button>
@@ -50,6 +50,9 @@
   </script>
   <script type="text/template" id="alert-template">
     <h6 class='alert'><%- alert %></h6>
+  </script>
+  <script type="text/template" id="turn-modal-template">
+    <h4 class='turn'><%- turn %></h4>
   </script>
 
 
