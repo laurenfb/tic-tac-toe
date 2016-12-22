@@ -17,7 +17,7 @@ const ApplicationView = Backbone.View.extend({
       collection: this.model.board,
       el: this.$("#board-holder")
     })
-    $("#modal").html(this.formModalTemplate)
+    $("#modal").html(this.formModalTemplate())
     this.listenTo(board, 'finishGame', this.gameOver)
     this.listenTo(board, 'switchPlayer', this.nameInModal)
 
