@@ -19,12 +19,11 @@ h1{
   padding-bottom: 30%; /* = width for a 1:1 aspect ratio */
   margin: 1.66%;
   overflow: hidden;
-  background-color: rgb(100, 165, 224);
-  opacity: 0.9;
+  background-color: gold;
 }
 
 .square:hover{
-  background-color: rgb(0, 31, 143)
+  background-color: black;
 }
 
 .square-content {
