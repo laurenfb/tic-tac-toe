@@ -18,6 +18,7 @@ const ApplicationView = Backbone.View.extend({
     })
     $("#modal").html(this.formModalTemplate)
     this.listenTo(board, 'finishGame', this.gameOver)
+    this.listenTo(board, 'switchPlayer', this.nameInModal)
 
     board.render();
     return this;
@@ -69,6 +70,17 @@ const ApplicationView = Backbone.View.extend({
     this.model.resetBoard();
     // re-render the board
     this.render();
+  },
+
+  nameInModal: function(event) {
+    let nextPlayer;
+    if (this.model.board.nextTurn % 2 === 0) {
+      nextPlayer = this.model.get("playerO")
+    } else {
+      nextPlayer = this.model.get("playerX")
+    }
+    console.log(nextPlayer)
+    return nextPlayer;
   },
 
   clearForm: function(event) {

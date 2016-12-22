@@ -43,6 +43,8 @@ const BoardView = Backbone.View.extend({
       let win = board.findWinner();
       if (win !== "pending") {
         this.trigger('finishGame', this)
+      } else {
+        this.trigger('switchPlayer', this) // trigger an event to change the name of the next player listed in the modal
       }
     } else if (board.nextTurn === 10 || board.status != "pending") {
       $("#modal").find('.alert').remove()
