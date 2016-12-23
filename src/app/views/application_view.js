@@ -30,7 +30,8 @@ const ApplicationView = Backbone.View.extend({
     'click .btn-begin': 'startGame',
     'click .btn-restart': 'clearOldGame',
     'click .btn-cancel': 'clearForm',
-    'click .btn-fetch': 'getAPIHistory'
+    'click .btn-fetch': 'getAPIHistory',
+    'click .btn-clear-hist': 'clearAPIHistory'
   },
 
   startGame: function(event) {
@@ -103,9 +104,15 @@ const ApplicationView = Backbone.View.extend({
         let newAPIGameView = new APIGameView({model: list[i]});
         newAPIGameView.render();
       }
-
     });
+    $(".btn-fetch").hide();
+    $(".btn-clear-hist").show();
+  },
 
+  clearAPIHistory: function() {
+    $("li").remove();
+    $(".btn-clear-hist").hide();
+    $(".btn-fetch").show();
   }
 
 })
