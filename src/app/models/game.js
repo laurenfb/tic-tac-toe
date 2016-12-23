@@ -2,16 +2,46 @@ import Backbone from 'backbone';
 import Board from '../collections/board'
 
 const Game = Backbone.Model.extend({
-  defaults: {
-  },
-
   // we're connecting to the API here, using Backbone
   url: 'https://lauren-tic-tac-toe.herokuapp.com/api/v1/games',
-  // don't need a parse, because getting all games comes back as an array
-  // parse: function(data) {
-  //
-  // },
 
+  parse: function(gameData) {
+    let parsedData = [];
+
+    for (var i = 0; i < gameData.length; i++) {
+      // console.log("we are calling parse")
+      parsedData.push({
+        outcome: gameData[i].outcome,
+        playerX: gameData[i].players[0],
+        playerO: gameData[i].players[1]
+
+      })
+      // console.log(gameData[i].players)
+    }
+    return parsedData
+  },
+
+  toJSON: function() {
+    // write code here to save the game to the database
+    let outcome = (this.board.status === "tie!"? "draw" : this.board.status[0]);
+    let x = this.get("playerX");
+    let o = this.get("playerO");
+    let boardForAPI = [];
+    for (var i = 0; i < this.board.models.length; i++) {
+      if (this.board.models[i].get("contents") == "") {
+        boardForAPI.push(" ")
+      } else {
+        boardForAPI.push(this.board.models[i].get("contents"))
+      }
+    }
+    let gameToSave = {
+      "board": boardForAPI,
+      "players": [x, o],
+      "outcome": outcome
+    };
+    // console.log(gameToSave)
+    return gameToSave;
+  },
 
   initialize: function(options) {
     this.set("playerX", "player X");

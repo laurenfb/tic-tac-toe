@@ -3,6 +3,7 @@ import $ from 'jquery';
 import Game from '../models/game';
 import BoardView from '../views/board_view';
 import _ from 'underscore';
+import APIGameView from '../views/api_game_view';
 
 const ApplicationView = Backbone.View.extend({
   initialize: function() {
@@ -28,7 +29,9 @@ const ApplicationView = Backbone.View.extend({
   events: {
     'click .btn-begin': 'startGame',
     'click .btn-restart': 'clearOldGame',
-    'click .btn-cancel': 'clearForm'
+    'click .btn-cancel': 'clearForm',
+    'click .btn-fetch': 'getAPIHistory',
+    'click .btn-clear-hist': 'clearAPIHistory'
   },
 
   startGame: function(event) {
@@ -92,26 +95,26 @@ const ApplicationView = Backbone.View.extend({
   },
 
   saveGameToAPI: function(game) {
-    // write code here to save the game to the database
-    let outcome = (game.board.status === "tie!"? "draw" : game.board.status[0]);
-    let x = game.get("playerX");
-    let o = game.get("playerO");
-    let boardForAPI = [];
-    for (var i = 0; i < game.board.models.length; i++) {
-      if (game.board.models[i].get("contents") == "") {
-        boardForAPI.push(" ")
-      } else {
-        boardForAPI.push(game.board.models[i].get("contents"))
-      }
+    game.save();
+  },
 
-    }
-    let gameToSave = {
-      "board": boardForAPI,
-      "players": [x, o],
-      "outcome": outcome
-    }
-    game.save(gameToSave);
+  getAPIHistory: function() {
+    this.model.fetch().done( function(list){
+      for (var i = 0; i < list.length; i++) {
+        let newAPIGameView = new APIGameView({model: list[i]});
+        newAPIGameView.render();
+      }
+    });
+    $(".btn-fetch").hide();
+    $(".btn-clear-hist").show();
+  },
+
+  clearAPIHistory: function() {
+    $("li").remove();
+    $(".btn-clear-hist").hide();
+    $(".btn-fetch").show();
   }
+
 })
 
 export default ApplicationView;

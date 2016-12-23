@@ -17,8 +17,10 @@
       <section class='small-12 medium-6 columns'>
         <div id='modal'>
         </div>
-        <div id='form-modal'>
-
+        <div id='API-ref'>
+          <button class='button btn-fetch'>get game history</button>
+          <button class='button btn-clear-hist'>clear</button>
+          <ul id='API-list'></ul>
         </div>
       </section>
 
@@ -53,6 +55,9 @@
   </script>
   <script type="text/template" id="turn-modal-template">
     <h4 class='turn'><%- turn %></h4>
+  </script>
+  <script type="text/template" id="api-game-template">
+    <li><%- game.players[0] + " vs. " + game.players[1]%></li>
   </script>
 
 
