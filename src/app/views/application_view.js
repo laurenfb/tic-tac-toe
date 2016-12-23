@@ -100,10 +100,10 @@ const ApplicationView = Backbone.View.extend({
   getAPIHistory: function() {
     this.model.fetch().done( function(list){
       for (var i = 0; i < list.length; i++) {
-        let newAPIGameView = new APIGameView({
-          game: list[i]
-        });
+        let newAPIGameView = new APIGameView({model: list[i]});
+        newAPIGameView.render();
       }
+
     });
 
   }
