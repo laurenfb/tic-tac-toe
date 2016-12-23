@@ -11,7 +11,7 @@ const APIGameView = Backbone.View.extend({
   },
 
   render: function(game){
-    this.element.append(this.gameTemplate("hi"))
+    this.element.append(this.gameTemplate(game))
   }
 });
 

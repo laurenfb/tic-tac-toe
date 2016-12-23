@@ -5,17 +5,6 @@ const Game = Backbone.Model.extend({
   // we're connecting to the API here, using Backbone
   url: 'https://lauren-tic-tac-toe.herokuapp.com/api/v1/games',
 
-  parse: function(gameData) {
-    let parsedData = [];
-    for (var i = 0; i < gameData.length; i++) {
-      parsedData.push({
-        outcome: gameData[i].outcome,
-        playerX: gameData[i].players[0],
-        playerO: gameData[i].players[1]
-      })
-    }
-  },
-
   toJSON: function() {
     // write code here to save the game to the database
     let outcome = (this.board.status === "tie!"? "draw" : this.board.status[0]);
