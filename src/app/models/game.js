@@ -2,11 +2,30 @@ import Backbone from 'backbone';
 import Board from '../collections/board'
 
 const Game = Backbone.Model.extend({
-  defaults: {
-  },
-
   // we're connecting to the API here, using Backbone
   url: 'https://lauren-tic-tac-toe.herokuapp.com/api/v1/games',
+
+  toJSON: function() {
+    // write code here to save the game to the database
+    let outcome = (this.board.status === "tie!"? "draw" : this.board.status[0]);
+    let x = this.get("playerX");
+    let o = this.get("playerO");
+    let boardForAPI = [];
+    for (var i = 0; i < this.board.models.length; i++) {
+      if (this.board.models[i].get("contents") == "") {
+        boardForAPI.push(" ")
+      } else {
+        boardForAPI.push(this.board.models[i].get("contents"))
+      }
+    }
+    let gameToSave = {
+      "board": boardForAPI,
+      "players": [x, o],
+      "outcome": outcome
+    };
+    console.log(gameToSave)
+    return gameToSave;
+  },
 
   initialize: function(options) {
     this.set("playerX", "player X");

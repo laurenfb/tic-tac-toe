@@ -93,29 +93,17 @@ const ApplicationView = Backbone.View.extend({
   },
 
   saveGameToAPI: function(game) {
-    // write code here to save the game to the database
-    let outcome = (game.board.status === "tie!"? "draw" : game.board.status[0]);
-    let x = game.get("playerX");
-    let o = game.get("playerO");
-    let boardForAPI = [];
-    for (var i = 0; i < game.board.models.length; i++) {
-      if (game.board.models[i].get("contents") == "") {
-        boardForAPI.push(" ")
-      } else {
-        boardForAPI.push(game.board.models[i].get("contents"))
-      }
-
-    }
-    let gameToSave = {
-      "board": boardForAPI,
-      "players": [x, o],
-      "outcome": outcome
-    }
-    game.save(gameToSave);
+    game.save();
   },
 
   getAPIHistory: function() {
-    this.model.fetch();
+    this.model.fetch().done( function(list){
+      console.log(list);
+      for (var i = 0; i < list.length; i++) {
+        console.log(list[i]);
+      }
+    });
+
   }
 
 })
