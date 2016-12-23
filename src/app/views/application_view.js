@@ -3,6 +3,7 @@ import $ from 'jquery';
 import Game from '../models/game';
 import BoardView from '../views/board_view';
 import _ from 'underscore';
+import APIGameView from '../views/api_game_view';
 
 const ApplicationView = Backbone.View.extend({
   initialize: function() {
@@ -98,9 +99,10 @@ const ApplicationView = Backbone.View.extend({
 
   getAPIHistory: function() {
     this.model.fetch().done( function(list){
-      console.log(list);
       for (var i = 0; i < list.length; i++) {
-        console.log(list[i]);
+        let newAPIGameView = new APIGameView({
+          game: list[i]
+        });
       }
     });
 

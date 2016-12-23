@@ -19,6 +19,8 @@
         </div>
         <div id='API-ref'>
           <button class='button btn-fetch'>get game history</button>
+          <button class='button btn-clear-hist'>clear</button>
+          <ul id='API-list'></ul>
         </div>
       </section>
 
@@ -53,6 +55,9 @@
   </script>
   <script type="text/template" id="turn-modal-template">
     <h4 class='turn'><%- turn %></h4>
+  </script>
+  <script type="text/template" id="api-game-template">
+    <li></li>
   </script>
 
 

@@ -60,3 +60,7 @@ h1{
 .alert{
   color: red
 }
+
+.btn-clear-hist{
+  display: none;
+}
