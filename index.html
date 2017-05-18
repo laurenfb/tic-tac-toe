@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>tic tac toe</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body>
+
+      <header>
+        <h1>tic tac toe</h1>
+      </header>
+    <div class='row'>
+      <section class='small-12 medium-6 columns'>
+        <div id='modal'>
+        </div>
+        <div id='API-ref'>
+          <button class='button btn-fetch'>get game history</button>
+          <button class='button btn-clear-hist'>clear</button>
+          <ul id='API-list'></ul>
+        </div>
+      </section>
+
+      <main class='small-12 medium-6 columns' id="board-holder"></main>
+    </div>
+
+
+    <!-- Underscore Templates -->
+  <script type="text/template" id="square-template">
+      <div class="square-content"><%- contents %></div>
+  </script>
+  <script type="text/template" id="winner-modal-template">
+    <h4><%- winStatus %></h4>
+    <button type='button' class='button btn-restart'>new game</button>
+  </script>
+  <script type="text/template" id="form-modal-template">
+    <form>
+      <label>
+        player x
+        <input type="text" name="playerX" value="<%- this.model.get('playerX') %>">
+      </label>
+      <label>
+        player o
+        <input type="text" name="playerO" value="<%- this.model.get('playerO') %>">
+      </label>
+      <button type="submit" class="button btn-begin">begin!</button>
+      <button type="button" class="button btn-cancel">clear</button>
+    </form>
+  </script>
+  <script type="text/template" id="alert-template">
+    <h6 class='alert'><%- alert %></h6>
+  </script>
+  <script type="text/template" id="turn-modal-template">
+    <h4 class='turn'><%- turn %></h4>
+  </script>
+  <script type="text/template" id="api-game-template">
+    <li><%- game.players[0] + " vs. " + game.players[1]%></li>
+  </script>
+
+
+  <!-- Entire JS project built by Webpack -->
+    <script src="app.bundle.js" charset="utf-8"></script>
+  </body>
+</html>

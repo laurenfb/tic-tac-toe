@@ -1,0 +1,73 @@
+header{
+  text-align: center;
+  width: 100%;
+  background-color: black;
+  margin-bottom: 4vh;
+  padding: 1% 0 1% 0
+}
+
+h1{
+  font-size: 5em;
+  color: white;
+  font-weight: bolder;
+}
+
+.square {
+  float: left;
+  position: relative;
+  width: 30%;
+  padding-bottom: 30%; /* = width for a 1:1 aspect ratio */
+  margin: 1.66%;
+  overflow: hidden;
+  background-color: gold;
+}
+
+.square:hover{
+  background-color: black;
+}
+
+.square-content {
+  position: absolute;
+  height: 80%;
+  width: 90%;
+  padding: 10% 5%;
+  font-size: 4em;
+  text-align: center;
+  color: white;
+}
+
+#board-holder{
+  max-width: 550px;
+  margin: auto;
+}
+
+#modal, #API-ref {
+  z-index: 10;
+  width: auto;
+  height: auto;
+  text-align: center;
+  border: 10px solid black;
+  padding: 12%;
+  color: rgb(14, 60, 70);
+  font-weight: bolder;
+}
+
+#API-ref{
+  margin-top: 10%;
+}
+
+.alert{
+  color: red
+}
+
+.btn-clear-hist{
+  display: none;
+}
+
+.button, .button:hover, .button:focus{
+  background-color: black;
+}
+
+li{
+  list-style-type: none;
+}
