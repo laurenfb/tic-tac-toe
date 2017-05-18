@@ -17,7 +17,11 @@ var common = {
     }
 }
 
-var production = {};
+var production = {
+  output: {
+    publicPath: '/tic-tac-toe'
+  }
+};
 
 var development = {
   devtool: 'source-map',
