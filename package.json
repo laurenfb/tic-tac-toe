@@ -5,6 +5,8 @@
   "main": "./bin/app.bundle.js",
   "scripts": {
     "start": "webpack-dashboard -- webpack-dev-server",
+    "build": "webpack",
+    "deploy": "gh-pages -d build",
     "test": "jasmine",
     "repl": "babel-node"
   },
@@ -12,9 +14,9 @@
   "license": "MIT",
   "repository": "AdaGold/tic-tac-toe",
   "bugs": {
-    "url": "https://github.com/AdaGold/tic-tac-toe/issues"
+    "url": "https://github.com/laurenfb/tic-tac-toe/issues"
   },
-  "homepage": "https://github.com/AdaGold/tic-tac-toe#readme",
+  "homepage": "https://github.com/laurenfb/tic-tac-toe#readme",
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
@@ -31,6 +33,7 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
-    "babel-polyfill": "^6.16.0"
+    "babel-polyfill": "^6.16.0",
+    "webpack-merge": "^4.1.0"
   }
 }
